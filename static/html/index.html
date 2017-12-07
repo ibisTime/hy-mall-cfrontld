@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="head.html?__inline">
+    <title>领队首页</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+    <body class="bg_fff">
+    <div class="user-top-wrap am-flexbox am-flexbox-dir-column">
+        <div class="top-infos">
+            <div id="userPhoto" class="top-img"></div>
+            <p id="mobile" class="mobile"></p>
+        </div>
+    </div>
+    <a id="noticeWrap" class="headline-tip border-bottom-1px" href="./public/notice.html">
+    	<div class="hp100 fl border-right-1px notice-icon"></div>
+		<div class="hp100 fr notice-con" id="goNotice"></div>
+    </a>
+    <div class="category-wrapper">
+        <div class="cateline am-flexbox am-flexbox-justify-between">
+            <div id="activity" class="cate-item">
+                <div class="cate-icon activity-icon"></div>
+                <p>活动管理</p>
+            </div>
+            <div id="singup" class="cate-item">
+                <div class="cate-icon singup-icon"></div>
+                <p>报名管理</p>
+            </div>
+        </div>
+        <div class="cateline am-flexbox am-flexbox-justify-between">
+            <div id="account" class="cate-item">
+                <div class="cate-icon account-icon"></div>
+                <p>账户管理</p>
+            </div>
+            <div id="aboutus" class="cate-item">
+                <div class="cate-icon aboutus-icon"></div>
+                <p>关于我们</p>
+            </div>
+        </div>
+    </div>
+	
+    <link rel="import" href="footer.html?__inline">
+    <script>
+        require(['app/controller/Index']);
+    </script>
+</body>
+
+</html>

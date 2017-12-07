@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>支付</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+	<div class="titleWrap">
+		<p class="fl text">支付金额</p>
+		<p class="fr text payAmount" id="totalAmount"></p>
+	</div>
+	<div class="titleWrap mb20 pay-wrap">
+		<p class="fl text mr20">可用余额</p>
+		<p class="fl text accountAmount" id="accountAmount"></p>
+	</div>
+	
+    <div class="recharge-wrapper mb20">
+        <div class="recharge-pay">
+            <div class="title border-bottom-1px">支付方式</div>
+            <div class="pay-type-list" id="payType">
+                <div class="pay-item active">
+                    <i class="icon-title icon-re"></i>
+                    <span id="payName"></span>
+                    <i class="chose-icon"></i>
+                </div>
+                <div class="pay-item border-top-1px hidden" id="wxPay">
+                    <i class="icon-title icon-wx"></i>
+                    <span>微信支付</span>
+                    <i class="chose-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wp100 btnWrap"><button class="am-button am-button-primary-48 wp100" id="payBtn">确认支付</button></div>
+    
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/pay/Pay']);
+    </script>
+</body>
+
+</html>
