@@ -44,7 +44,8 @@ define([
                 base.hideLoading();
                 base.showMsg("密码修改成功！");
                 setTimeout(function() {
-                    history.back();
+                	base.clearSessionUser();
+                    location.replace("./login.html")
                 }, 500);
             });
     }

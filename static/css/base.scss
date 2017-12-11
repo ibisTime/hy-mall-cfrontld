@@ -643,6 +643,21 @@ textarea {
             font-size: 0.3rem;
             color: #333;
         }
+        
+        .select-item {
+            position: relative;
+            flex: 1;
+            font-size: 0.3rem;
+            color: #333;
+        }
+        .textarea-item {
+            height: 3rem;
+            position: relative;
+            flex: 1;
+            font-size: 0.3rem;
+            color: #333;
+        }
+        
     }
 }
 

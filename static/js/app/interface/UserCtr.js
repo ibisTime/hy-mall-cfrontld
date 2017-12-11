@@ -8,9 +8,9 @@ define([
          * @param config {mobile, loginPwd, smsCaptcha, userReferee?}
          */
         register(config) {
-            return Ajax.post("805041", {
-                kind: "C",
-                loginPwdStrength: base.calculateSecurityLevel(config.loginPwd),
+            return Ajax.post("805045", {
+                kind: "OL",
+                idKind: '1',
                 ...config
             });
         },
@@ -20,7 +20,7 @@ define([
          */
         login(config) {
             return Ajax.post("805050", {
-                kind: "C",
+                kind: "OL",
                 ...config
             });
         },
@@ -29,9 +29,9 @@ define([
          * @param config: {mobile, smsCaptcha, newLoginPwd}
          */
         findPwd: (config) => {
-            return Ajax.post("805048", {
+            return Ajax.post("805063", {
                 loginPwdStrength: base.calculateSecurityLevel(config.newLoginPwd),
-                kind: "C",
+                kind: "OL",
                 ...config
             });
         },
@@ -40,7 +40,7 @@ define([
          * @param config: {newLoginPwd, oldLoginPwd}
          */
         changePwd: (config) => {
-            return Ajax.post("805049", {
+            return Ajax.post("805064", {
                 userId: base.getUserId(),
                 loginPwdStrength: base.calculateSecurityLevel(config.newLoginPwd),
                 ...config

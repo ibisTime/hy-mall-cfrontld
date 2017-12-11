@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>发布</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+	<div class="activityAddEdit-wrapper">
+        <form id="formWrapper" class="form-wrapper">
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">名称</span>
+                    <input type="text" placeholder="请输入活动名称" id="name" name="name" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">类型</span>
+                    <select id="type" name="type"  class="select-item">
+                    	<option value="">请选择类型</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">广告语</span>
+                    <input type="text" placeholder="请输入广告语" id="slogan" name="slogan" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">开始时间</span>
+                    <input type="text" placeholder="请输入开始时间" id="startDatetime" name="startDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">结束时间</span>
+                    <input type="text" placeholder="请输入结束时间" id="endDatetime" name="endDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">报名截止时间</span>
+                    <input type="text" placeholder="请输入报名截止时间" id="enrollEndDatetime" name="enrollEndDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">目的地</span>
+                    <input type="text" placeholder="请选择目的地" id="placeDest" name="placeDest" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">集合地</span>
+                    <input type="text" placeholder="请选择集合地" id="placeAsse" name="placeAsse" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">成行人数</span>
+                    <input type="text" placeholder="请输入成行人数" id="groupNum" name="groupNum" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">收费金额</span>
+                    <input type="text" placeholder="请输入收费金额" id="amount" name="amount" class="input-item"/>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">广告图</span>
+	                <div class="picWrap" id="advPic">
+			    		<!--<div class="pic" style="background-image: url('../../images/default-bg.png');" data-url="../../images/default-bg.png"><i class="delete"></i></div>
+			    		<div class="pic" style="background-image: url('../../images/图层-50@2x.png');" data-url="../../images/图层-50@2x.png"><i class="delete"></i></div>-->
+			    		<div id="uploadContainerAdvPic" class="fileWrap">
+					    	<div id="uploadBtnAdvPic" class="wp100 hp100">
+					            <div class="addbackPdf"></div>
+					        </div>
+		    			</div>
+			    	</div>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">缩略图</span>
+	                <div class="picWrap" id="pic">
+			    		<!--<div class="pic" style="background-image: url('../../images/default-bg.png');" data-url="../../images/default-bg.png"><i class="delete"></i></div>
+			    		<div class="pic" style="background-image: url('../../images/图层-50@2x.png');" data-url="../../images/图层-50@2x.png"><i class="delete"></i></div>-->
+			    		<div id="uploadContainerPic" class="fileWrap">
+					    	<div id="uploadBtnPic" class="wp100 hp100">
+					            <div class="addbackPdf"></div>
+					        </div>
+		    			</div>
+			    	</div>
+                </div>
+            </div>
+            	
+            <div class="form-item border-bottom-1px difficulty">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">强度系数</span>
+                    <div class="starWrap" id="indexQd">
+						<i data-score='1' class="star active"></i>
+						<i data-score='2' class="star"></i>
+						<i data-score='3' class="star"></i>
+						<i data-score='4' class="star"></i>
+						<i data-score='5' class="star"></i>
+					</div>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px difficulty">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">难度系数</span>
+                    <div class="starWrap" id="indexNd">
+						<i data-score='1' class="star active"></i>
+						<i data-score='2' class="star"></i>
+						<i data-score='3' class="star"></i>
+						<i data-score='4' class="star"></i>
+						<i data-score='5' class="star"></i>
+					</div>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px difficulty">
+                <div class="am-flexbox">
+                    <span class="item-title mr20">风险系数</span>
+                    <div class="starWrap" id="indexFj">
+						<i data-score='1' class="star active"></i>
+						<i data-score='2' class="star"></i>
+						<i data-score='3' class="star"></i>
+						<i data-score='4' class="star"></i>
+						<i data-score='5' class="star"></i>
+					</div>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">活动介绍</span>
+                    <textarea type="text" placeholder="请输入活动介绍" id="description" name="description" class="textarea-item"></textarea>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">地方介绍</span>
+                    <textarea type="text" placeholder="请输入地方介绍" id="placeDesc" name="placeDesc" class="textarea-item"></textarea>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">费用介绍</span>
+                    <textarea type="text" placeholder="请输入费用介绍" id="amountDesc" name="amountDesc" class="textarea-item"></textarea>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">具体行程</span>
+                    <textarea type="text" placeholder="请输入具体行程" id="scheduling" name="scheduling" class="textarea-item"></textarea>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox textarea-wrap">
+                    <span class="item-title mr20">装备建议</span>
+                    <textarea type="text" placeholder="请输入装备建议" id="equipment" name="equipment" class="textarea-item"></textarea>
+                </div>
+            </div>
+        </form>
+        <div class="subBtn-wrap">
+            <button id="subBtn" class="am-button am-button-primary wp100">提交</button>
+        </div>
+    </div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script type="text/javascript" src="../../js/lib/qiniu/plupload.full.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/qiniu/qiniu.min.js"></script>
+    <script src="../../js/lib/laydate/laydate.dev.js"></script>
+    <script>
+        require(['app/controller/activity/ActivityAddedit']);
+    </script>
+</body>
+
+</html>

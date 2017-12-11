@@ -2,22 +2,141 @@ define([
     'app/controller/base',
     'app/interface/UserCtr',
     'app/module/validate',
-    'app/module/smsCaptcha'
-], function(base, UserCtr, Validate, smsCaptcha) {
+    'app/module/smsCaptcha',
+    'picker',
+], function(base, UserCtr, Validate, smsCaptcha, Picker) {
     var timer;
     var userReferee = base.getUrlParam("userReferee");
+    
+    var first = []; /* 省，直辖市 */
+	var second = []; /* 市 */
+	var third = []; /* 镇 */
+	var selectedIndex = [0, 0, 0]; /* 默认选中的地区 */
+	var checked = [0, 0, 0]; /* 已选选项 */
 
     init();
 
     function init(){
+    	getPicker();
     	addListener();
     }
-
+    
+    //省市区选择器
+	function getPicker(){
+    	var _nameEl = $("#cityWrap")
+		
+		function creatList(obj, list){
+		  obj.forEach(function(item, index, arr){
+		  var temp = new Object();
+		  temp.text = item.name;
+		  temp.value = index;
+		  list.push(temp);
+		  })
+		}
+		
+		creatList(city, first);
+		
+		if (city[selectedIndex[0]].hasOwnProperty('sub')) {
+		  creatList(city[selectedIndex[0]].sub, second);
+		} else {
+		  second = [{text: '', value: 0}];
+		}
+		
+		if (city[selectedIndex[0]].sub[selectedIndex[1]].hasOwnProperty('sub')) {
+		  creatList(city[selectedIndex[0]].sub[selectedIndex[1]].sub, third);
+		} else {
+		  third = [{text: '', value: 0}];
+		}
+		
+		var picker = new Picker({
+			data: [first, second, third],
+			selectedIndex: selectedIndex,
+			title: '地址选择'
+		});
+		
+		picker.on('picker.select', function (selectedVal, selectedIndex) {
+		  var text1 = first[selectedIndex[0]].text;
+		  var text2 = second[selectedIndex[1]].text;
+		  var text3 = third[selectedIndex[2]] ? third[selectedIndex[2]].text : '';
+		
+			$("#city").html(text1 + ' ' + text2 + ' ' + text3).removeClass("placeholder");
+			$("#city").attr("data-prv",text1);
+			$("#city").attr("data-city",text2);
+			$("#city").attr("data-area",text3);
+			
+		});
+		
+		picker.on('picker.change', function (index, selectedIndex) {
+		  if (index === 0){
+		    firstChange();
+		  } else if (index === 1) {
+		    secondChange();
+		  }
+		
+			function firstChange() {
+			    second = [];
+			    third = [];
+			    checked[0] = selectedIndex;
+			    var firstCity = city[selectedIndex];
+			    if (firstCity.hasOwnProperty('sub')) {
+			      creatList(firstCity.sub, second);
+			
+			      var secondCity = city[selectedIndex].sub[0]
+			      if (secondCity.hasOwnProperty('sub')) {
+			        creatList(secondCity.sub, third);
+			      } else {
+			        third = [{text: '', value: 0}];
+			        checked[2] = 0;
+			      }
+			    } else {
+			      second = [{text: '', value: 0}];
+			      third = [{text: '', value: 0}];
+			      checked[1] = 0;
+			      checked[2] = 0;
+			    }
+			
+			    picker.refillColumn(1, second);
+			    picker.refillColumn(2, third);
+			    picker.scrollColumn(1, 0)
+			    picker.scrollColumn(2, 0)
+			}
+			
+			function secondChange() {
+			    third = [];
+			    checked[1] = selectedIndex;
+			    var first_index = checked[0];
+			    if (city[first_index].sub[selectedIndex].hasOwnProperty('sub')) {
+			      var secondCity = city[first_index].sub[selectedIndex];
+			      creatList(secondCity.sub, third);
+			      picker.refillColumn(2, third);
+			      picker.scrollColumn(2, 0)
+			    } else {
+			      third = [{text: '', value: 0}];
+			      checked[2] = 0;
+			      picker.refillColumn(2, third);
+			      picker.scrollColumn(2, 0)
+			    }
+			}
+		
+		});
+		
+		picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
+//		  console.log(selectedVal);
+//		  console.log(selectedIndex);
+		});
+		
+		$("#cityWrap").on('click', function () {
+			picker.show();
+		});
+    }
 
     function addListener(){
         var _formWrapper = $("#formWrapper");
         _formWrapper.validate({
             'rules': {
+                outName: {
+                    required: true,
+                },
                 mobile: {
                     required: true,
                     mobile: true
@@ -26,29 +145,50 @@ define([
                     required: true,
                     "sms": true
                 },
-                loginPwd: {
+                realName: {
                     required: true,
-                    maxlength: 16,
-                    minlength: 6,
-                    isNotFace: true
+                    chinese: true
                 },
-                rePwd: {
+                idNo: {
                     required: true,
-                    equalTo: "#loginPwd"
-                }
+                    isIdCardNo: true
+                },
+                city: {
+                    required: true,
+                },
+                address: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                emeContact: {
+                    required: true,
+                },
+                emeMobile: {
+                    required: true,
+                    mobile: true
+                },
             },
             onkeyup: false
         });
         timer = smsCaptcha.init({
-            bizType: '805041'
+            bizType: '805045'
         });
         $("#registerBtn").on("click", function() {
             if(_formWrapper.valid()){
-                register(_formWrapper.serializeObject());
+            	var param = _formWrapper.serializeObject()
+		        param.province = $("#city").attr("data-prv");
+				param.city =$("#city").attr("data-city");
+				param.area =$("#city").attr("data-area");
+				
+                register(param);
             }
         });
     }
 
+	//注册
     function register(param) {
         base.showLoading("注册中...");
         if(userReferee) {

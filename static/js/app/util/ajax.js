@@ -68,7 +68,7 @@ define([
                     sessionStorage.setItem("l-return", location.pathname + location.search);
                     loading.hideLoading();
                     setTimeout(function() {
-                        location.replace("../user/redirect.html");
+                        location.replace("../user/login.html");
                     }, 800);
                     return $.Deferred().reject("登录超时，请重新登录");
                 }
@@ -80,7 +80,7 @@ define([
                     sessionStorage.setItem("l-return", location.pathname + location.search);
                     loading.hideLoading();
                     setTimeout(function() {
-                        location.replace("../user/redirect.html");
+                        location.replace("../user/login.html");
                     }, 800);
                     return $.Deferred().reject("登录异常，请重新登录");
                 }

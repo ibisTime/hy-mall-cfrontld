@@ -40,7 +40,7 @@ define([
             onkeyup: false
         });
         timer = smsCaptcha.init({
-            bizType: '805048'
+            bizType: '805063'
         });
         $("#findBtn").on("click", function() {
             if(_formWrapper.valid()){
