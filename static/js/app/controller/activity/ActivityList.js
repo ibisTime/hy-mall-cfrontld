@@ -93,7 +93,7 @@ define([
             base.hideLoading()
         }, () => base.hideLoading());
     }
-    //订单列表
+    //列表
     function buildHtml(item) {
     	var tmplProHtml = '',tmplbtnHtml =' ';
     	
@@ -110,6 +110,11 @@ define([
     	if(item.status == "0" || item.status == "2" ){
     		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>
                             <a class="am-button am-button-small cancel-order" href="../activity/activity-addedit.html?code=${item.code}">修改</a></div>`
+    	
+    	//已发布
+    	}else if(item.status == "1"){
+    		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small" href="../public/comment2.html?code=${item.code}">查看留言</a></div>`
+    	
     	}
     	
         return `<div class="order-item leaseOrder-item">
@@ -121,7 +126,6 @@ define([
                     </div>`+tmplbtnHtml+`</div></div>`;
 
     }
-    
 	
 	function addListener(){
 		// tabs切换事件
@@ -153,7 +157,6 @@ define([
             if (canScrolling && !isEnd && ($(document).height() - $(window).height() - 10 <= $(document).scrollTop())) {
                 canScrolling = false;
                 var choseIndex = $(".am-tabs-tab-active").index() - 1;
-                showLoading();
                 getPageActivity();
             }
         });

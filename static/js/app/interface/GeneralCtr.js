@@ -80,43 +80,19 @@ define([
                 type: "2"
             }, refresh);
         },
-        // 分页查询咨询
-        getPageInformation(config, refresh) {
-            return Ajax.get("801005", {
-                status: 1,
+        /**
+         * 评论/留言(活动留言)
+         * @config：{content,entityCode,parentCode,type}
+         */
+        comment(config, refresh) {
+            return Ajax.get("801020", {
             	userId: base.getUserId(),
                 ...config
             }, refresh);
         },
-        // 分页查询咨询
-        getInformationDetail(code) {
-            return Ajax.get("801006", {
-            	code,
-            	userId: base.getUserId()
-            }, true);
+        // 分页查询评论(活动留言)
+        getPageActComment(config, refresh){
+            return Ajax.get("801027", config, refresh);
         },
-        /**
-         * 收藏
-         * @type：类型(P 产品 RP租赁 N 资讯)
-         */
-        addCollecte(code,type){
-        	return Ajax.get("801030", {
-        		entityCode:code,
-        		interacter: base.getUserId(),
-        		type: type
-        	}, true);
-        },
-        // 取消收藏
-        cancelCollecte(code,type){
-        	return Ajax.get("801031", {
-        		entityCode:code,
-        		interacter: base.getUserId(),
-        		type: type
-        	}, true);
-        },
-        // 分页查询评论
-        getPageComment(config, refresh){
-            return Ajax.get("801028", config, refresh);
-        }
     };
 })

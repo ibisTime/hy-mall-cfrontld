@@ -54,6 +54,19 @@ label.error {
 .tcolor_red{
     color: $red-color !important;
 }
+.tcolor_primary{
+    color: $primary-color !important;
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0,0,0,.3);
+    transition: .3s;
+}
 // Swiper
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background: #fff;
@@ -1101,8 +1114,167 @@ label.error {
         width: 3.3rem;
     }
 }
-
-
+.tNcomment-item{
+    width: 100%;
+    overflow: hidden;
+    padding: .2rem 0;
+    border-bottom: 1px solid $border-color;
+    
+    .userPicWrap{
+        width: .9rem;
+        float: left;
+        
+        .userPic{
+            width: .6rem;
+            height: .6rem;
+            border-radius: 50%;
+            border: 1px solid $border-color;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        
+    }
+    
+    .info{
+        width: 6rem;
+        float: left;
+        
+        .userInfo{
+            height: .6rem;
+            padding-top: .05rem;
+            margin-bottom: .2rem;
+            position: relative;
+            
+            p{
+                font-size: .26rem;
+                line-height: 1;
+            }
+            samp{
+                font-size: .22rem;
+                color: #999;
+                line-height: 1;
+            }
+        }
+        
+        .toComment{
+            width: 100%;
+            margin-bottom: .2rem;
+            background-color: #f8f7f3;
+            color: #c3b6a3;
+            font-size: .26rem;
+            padding: .1rem .15rem;
+            border-radius: .08rem;
+            
+            .toNickName{
+                margin-bottom: .05rem;
+                samp{
+                    color: #c3b6a3;
+                    margin-left: .1rem;
+                }
+            }
+        }
+        
+        .content{
+            font-size: .26rem;
+        }
+        
+        .bottomWrap{
+            width: 100%;
+            overflow: hidden;
+            margin-top: .1rem;
+            
+            .reply{
+                height: .5rem;
+                line-height: 1;
+                color: #666;
+                font-size: .26rem;
+                float: right;
+                
+                .icon{
+                    display: inline-block;
+                    width: .5rem;
+                    height: .5rem;
+                    background-image: url('../images/评论回复.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: auto .5rem;
+                    margin-right: .05rem;
+                    line-height: 1;
+                }
+                samp{
+                    display: inline-block;
+                    position: relative;
+                    top:-.16rem;
+                }
+            }
+        }
+        
+    }
+}
+.tNotes-comment{
+    width: 100%;
+    overflow: hidden;
+    padding: .3rem 0 0;
+    
+    .title{
+        text-align: center;
+        font-size: .3rem;
+        margin-bottom: .2rem;
+    }
+    .wrap{
+        display: block;
+        padding: 0 .3rem .2rem;
+    } 
+    .allTNotesComment{
+        display: block;
+        width: 2.2rem;
+        padding: .1rem 0;
+        overflow: hidden;
+        text-align: center;
+        color: $primary-color;
+        margin: 0 auto .3rem;
+    }
+}
+.tNDetail-bottom{
+    width: 100%;
+    height: 0.98rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    background-color: #fff;
+    border-top: 1px solid $border-color;
+    
+    .inputWrap{
+        width: 6rem;
+        height: .68rem;
+        border: 1px solid $border-color;
+        padding: .1rem .2rem;
+        border-radius: .08rem;
+        margin-left: .3rem;
+        margin-top: .15rem;
+        
+        input{
+            width: 100%;
+            color: #333;
+            line-height: 1;
+            font-size: .26rem;
+        }
+    }
+    
+    .comBtn{
+        width: .8rem;
+        height: .98rem;
+        background-image: url('../images/发表评论.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto .4rem;
+        margin-left: .1rem;
+    }
+    
+}
 
 
 

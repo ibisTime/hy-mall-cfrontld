@@ -31,7 +31,7 @@ define([
 	function getUserInfo() {
 		return UserCtr.getUser().then(function(data) {
 			$("#mobile").text(data.mobile);
-			$("#userPhoto").css("background-image", "url('"+base.getWXAvatar(data.photo)+"')");
+			$("#userPhoto").css("background-image", "url('"+base.getAvatar(data.photo)+"')");
 		});
 	}
   

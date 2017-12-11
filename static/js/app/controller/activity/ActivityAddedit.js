@@ -296,19 +296,12 @@ define([
 	    	if (_formWrapper.valid()) {
 	    		var params = $('#formWrapper').serializeObject();
 	    		var pic='';
-	    		var advPic='';
+	    		var advPic=$("#advPic").find('.pic').attr("data-url");
 	    		
-      			$("#advPic").find('.pic').each(function(i, d){
-      				advPic+=$(this).attr("data-url")
-      				
-      				if(i<$("#picWrap").find('.pic').length-1){
-      					advPic+='||';
-      				}
-      			})
       			$("#pic").find('.pic').each(function(i, d){
       				pic+=$(this).attr("data-url")
       				
-      				if(i<$("#picWrap").find('.pic').length-1){
+      				if(i<$("#pic").find('.pic').length-1){
       					pic+='||';
       				}
       			})

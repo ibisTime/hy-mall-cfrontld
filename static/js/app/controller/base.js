@@ -210,7 +210,7 @@ define([
             if(!pic) {
                 return "/static/images/avatar.png";
             }
-            return Base.getImg(pic, "?imageMogr2/auto-orient/thumbnail/!200x200r");
+            return Base.getImg(pic, "?imageMogr2/auto-orient/interlace/1");
         },
         getWXAvatar: function(pic){
             if(!pic) {
