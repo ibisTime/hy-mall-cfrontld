@@ -41,10 +41,10 @@ define([
 		$("#userPhoto").click(function() {
             location.href = "../user/set.html";
         });
-		//账户管理
-		$("#account").click(function() {
-            location.href = "./account/account.html";
-        });
+//		//账户管理
+//		$("#account").click(function() {
+//          location.href = "./account/account.html";
+//      });
 		
         // 关于我们
         $("#aboutus").click(function() {

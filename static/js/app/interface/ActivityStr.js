@@ -38,5 +38,13 @@ define([
             	code
             });
         },
+        // 分页查询报名
+        getPageOrder(config, refresh) {
+            return Ajax.get("808737", {
+            	leaderUser: base.getUserId(),
+                ...config
+            }, refresh);
+        },
+        
     };
 })
