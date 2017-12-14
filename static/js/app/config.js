@@ -4,8 +4,6 @@ var PIC_SHOW = '?imageMogr2/auto-orient/interlace/1';
 var JFPRODUCTTYPE = 'J01';
 var JFLEASEPRODUCTTYPE = 'J04';
 var SYS_USER = 'SYS_USER_HW';
-var SYS_USERNAME = '邮寄发货';
-var SHARE_URL = "http://cm.hwt.hichengdai.com/";
 
 (function() {
 	// 判断是否登录

@@ -1,10 +1,9 @@
 define([
     'app/controller/base',
     'swiper',
-    'app/module/weixin',
     'app/interface/GeneralCtr',
     'app/interface/ActivityStr'
-], function(base, Swiper, weixin, GeneralCtr, ActivityStr) {
+], function(base, Swiper, GeneralCtr, ActivityStr) {
 	var code = base.getUrlParam("code");
     init();
 
@@ -45,13 +44,6 @@ define([
 			}
 			
 			$('title').html(data.name+'-活动详情');
-			//微信分享
-	        weixin.initShare({
-	            title: data.name+'-活动详情',
-	            desc: data.slogan,
-	            link: location.href,
-	            imgUrl: base.getImg(data.advPic)
-	        });
 	        
 	        $(".detail-title .name").html(data.name)
 			$(".detail-title .slogan").html(data.slogan)
