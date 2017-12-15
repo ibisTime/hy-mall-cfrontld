@@ -48,16 +48,30 @@
                     <input type="text" placeholder="请输入报名截止时间" id="enrollEndDatetime" name="enrollEndDatetime" class="input-item" data-format="yyyy-MM-dd"/>
                 </div>
             </div>
+            <div class="form-item border-bottom-1px" id="placeDestCityWrap">
+	            <div class="am-flexbox">
+	                <span class="item-title mr20">目的地所在地区</span>
+	                <div class="input-item placeholder addressVal" >请选择目的地所在地区</div>
+	                <input type="text" class="hiddenInput addressValhidden" id="placeDestCity"  name="placeDestCity"/>
+	            </div>
+	        </div>
             <div class="form-item border-bottom-1px">
                 <div class="am-flexbox">
                     <span class="item-title mr20">目的地</span>
-                    <input type="text" placeholder="请选择目的地" id="placeDest" name="placeDest" class="input-item"/>
+                    <input type="text" placeholder="请输入目的地详细地址" id="placeDest" name="placeDest" class="input-item"/>
                 </div>
             </div>
+            <div class="form-item border-bottom-1px" id="placeAsseCityWrap">
+	            <div class="am-flexbox">
+	                <span class="item-title mr20">集合地所在地区</span>
+	                <div class="input-item placeholder addressVal" >请选择集合地所在地区</div>
+	                <input type="text" class="hiddenInput addressValhidden" id="placeAsseCity"  name="placeAsseCity"/>
+	            </div>
+	        </div>
             <div class="form-item border-bottom-1px">
                 <div class="am-flexbox">
                     <span class="item-title mr20">集合地</span>
-                    <input type="text" placeholder="请选择集合地" id="placeAsse" name="placeAsse" class="input-item"/>
+                    <input type="text" placeholder="请输入集合地详细地址" id="placeAsse" name="placeAsse" class="input-item"/>
                 </div>
             </div>
             <div class="form-item border-bottom-1px">
@@ -69,7 +83,7 @@
             <div class="form-item border-bottom-1px">
                 <div class="am-flexbox">
                     <span class="item-title mr20">收费金额</span>
-                    <input type="text" placeholder="请输入收费金额" id="amount" name="amount" class="input-item"/>
+                    <input type="text" placeholder="请输入收费金额" id="amount" name="amount" class="input-item" data-amount="1"/>
                 </div>
             </div>
             <div class="form-item border-bottom-1px">
@@ -104,7 +118,7 @@
             <div class="form-item border-bottom-1px difficulty">
                 <div class="am-flexbox">
                     <span class="item-title mr20">强度系数</span>
-                    <div class="starWrap" id="indexQd">
+                    <div class="starWrap" id="indexQd" data-score="1">
 						<i data-score='1' class="star active"></i>
 						<i data-score='2' class="star"></i>
 						<i data-score='3' class="star"></i>
@@ -116,7 +130,7 @@
             <div class="form-item border-bottom-1px difficulty">
                 <div class="am-flexbox">
                     <span class="item-title mr20">难度系数</span>
-                    <div class="starWrap" id="indexNd">
+                    <div class="starWrap" id="indexNd" data-score="1">
 						<i data-score='1' class="star active"></i>
 						<i data-score='2' class="star"></i>
 						<i data-score='3' class="star"></i>
@@ -128,7 +142,7 @@
             <div class="form-item border-bottom-1px difficulty">
                 <div class="am-flexbox">
                     <span class="item-title mr20">风险系数</span>
-                    <div class="starWrap" id="indexFj">
+                    <div class="starWrap" id="indexFj" data-score="1">
 						<i data-score='1' class="star active"></i>
 						<i data-score='2' class="star"></i>
 						<i data-score='3' class="star"></i>
@@ -177,6 +191,7 @@
     <script type="text/javascript" src="../../js/lib/qiniu/plupload.full.min.js"></script>
     <script type="text/javascript" src="../../js/lib/qiniu/qiniu.min.js"></script>
     <script src="../../js/lib/laydate/laydate.dev.js"></script>
+	<script src="../../js/lib/city.js"></script>
     <script>
         require(['app/controller/activity/ActivityAddedit']);
     </script>

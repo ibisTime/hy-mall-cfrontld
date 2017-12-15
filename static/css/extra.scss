@@ -94,6 +94,16 @@ label.error {
     }
     .login-btn {
         padding: 0 0.3rem;
+        
+        .reg-a {
+            display: block;
+            width: 4rem;
+            overflow: hidden;
+            margin: .2rem auto;
+            text-align: center;
+            padding: .1rem 0;
+            color: $primary-color;
+        }
     }
 }
 .register-btn {
@@ -1294,9 +1304,45 @@ label.error {
     margin-left: -.44rem;
 }
 
+.rememberInfo{
+    text-align: right;
+    
+    samp{
+        display: inline-block;
+        line-height: .3rem;
+        color: #999;
+    }
+    
+    i{
+        display: inline-block;
+        width: .3rem;
+        height: .3rem;
+        border-radius: .04rem;
+        border: 1px solid #999;
+        margin-left: .15rem;
+        position: relative;
+        top: .05rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 90%;
+    }
+    
+    &.active i{
+        
+        border: 1px solid $primary-color;
+        background-image: url('../images/勾.png');
+    }
+}
 
-
-
+.hiddenInput{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+}
 
 
 

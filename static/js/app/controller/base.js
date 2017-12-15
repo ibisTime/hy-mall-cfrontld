@@ -67,6 +67,8 @@ define([
 		        }else{
 		        	if($oinput.attr("data-format")){ //需要格式化的日期 如:data-format="yyyy-MM-dd"
 		        		obj.find("[name="+name+"]").val(Base.formatDate(ival,$oinput.attr("data-format")));   
+		        	}else if($oinput.attr("data-amount")){ //需要格式化的日期 如:data-format="yyyy-MM-dd"
+		        		obj.find("[name="+name+"]").val(Base.formatMoney(ival));   
 		        	}else{
 		        		obj.find("[name="+name+"]").val(ival);   
 		        	}
