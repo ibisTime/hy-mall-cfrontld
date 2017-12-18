@@ -2,73 +2,40 @@ define([
     'app/controller/base',
     'app/interface/UserCtr',
     'app/interface/AccountCtr',
-    'app/module/setTradePwd'
+    'app/module/setTradePwd',
 ], function(base, UserCtr, AccountCtr, setTradePwd) {
-    var tradepwdFlag = false;
-    var count = 3;
+	var isBindCUser = base.getUrlParam("isBindCUser");//是否绑定c端
 
     init();
+    
     function init() {
-        base.showLoading();
-        getAccount();
-        getUser();
-        addListener();
+    	getAccount();
+    	addListener()
     }
-    function getUser() {
-        return UserCtr.getUser()
-            .then((data) => {
-                if (!--count) {
-                    base.hideLoading();
-                }
-                if(data.tradepwdFlag != "0"){
-                    tradepwdFlag = true;
-                } else {
-                    setTradePwd.addCont({
-                        mobile: data.mobile,
-                        success: function() {
-                            tradepwdFlag = true;
-                        }
-                    });
-                }
-            });
-    }
-    // 获取用户账户
-    function getAccount() {
-        AccountCtr.getAccount()
-            .then((data) => {
-                if (!--count) {
-                    base.hideLoading();
-                }
-                data.forEach((account) => {
-                    if(account.currency === "CNY"){
-                        $("#amount").text(base.formatMoney(account.amount));
-                        getInOutAmount(account.accountNumber);
-                    }
-                });
-            });
-    }
-
-    function getInOutAmount(accountNumber) {
-        return AccountCtr.getInOutAmount(accountNumber).then((data) => {
-            if (!--count) {
-                base.hideLoading();
-            }
-            $("#inAmount").text(base.formatMoney(data.inAmount));
-            $("#outAmount").text(base.formatMoney(data.withdrawAmount));
-        });
-    }
+    // 获取账户信息
+	function getAccount() {
+	    return AccountCtr.getAccount().then(function(data) {
+	        data.forEach(function(d, i) {
+	        	if (d.currency == "CNY") {
+	            	$("#cnyAmount samp").text(base.formatMoney(d.amount));
+	        	} else if (d.currency == "JF") {
+	        		console.log(d.amount)
+	            	$("#jfAmount samp").text(base.formatMoney(d.amount));
+	        	} else if (d.currency == "XJK") {
+	            	$("#XJKAmount samp").text(base.formatMoney(d.amount));
+	        	}
+	        })
+	    });
+	}
 
     function addListener() {
-        // 提现
-        $("#goBtn").click(function() {
-            if(tradepwdFlag) {
-                location.replace("./withdraw.html");
-            } else {
-                base.confirm("您还未设置支付密码，无法提现。<br/>点击确认前往设置")
-                    .then(() => {
-                        setTradePwd.showCont();
-                    }, () => {});
-            }
-        });
+    	
+        $("#jfAmount").click(function(){
+        	location.href = '../user/jf-account.html?isBindCUser='+isBindCUser
+        })
+        $("#XJKAmount").click(function(){
+        	location.href = '../user/xjk-account.html?isBindCUser='+isBindCUser
+        })
+    	
     }
 });

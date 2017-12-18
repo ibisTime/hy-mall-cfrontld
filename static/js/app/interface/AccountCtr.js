@@ -68,6 +68,13 @@ define([
                 userId: base.getUserId(),
                 status: "1"
             });
+        },
+        // 领队端账户划转至c端
+        transferAccounts(config){
+            return Ajax.post("802419", {
+            	fromUserId: base.getUserId(),
+                ...config
+            });
         }
     };
 })

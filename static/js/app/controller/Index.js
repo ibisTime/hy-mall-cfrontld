@@ -3,6 +3,7 @@ define([
     'app/interface/GeneralCtr',
     'app/interface/UserCtr',
 ], function(base, GeneralCtr, UserCtr) {
+    var isBindCUser = '0';//是否绑定c端用户
     
     init();
     
@@ -30,6 +31,7 @@ define([
     // 获取用户信息
 	function getUserInfo() {
 		return UserCtr.getUser().then(function(data) {
+			isBindCUser = data.cuserId?'1':'0';
 			$("#mobile").text(data.mobile);
 			$("#userPhoto").css("background-image", "url('"+base.getAvatar(data.photo)+"')");
 		});
@@ -41,10 +43,10 @@ define([
 		$("#userPhoto").click(function() {
             location.href = "../user/set.html";
         });
-//		//账户管理
-//		$("#account").click(function() {
-//          location.href = "./account/account.html";
-//      });
+		//账户管理
+		$("#account").click(function() {
+            location.href = "./account/account.html?isBindCUser="+isBindCUser;
+        });
 		
         // 关于我们
         $("#aboutus").click(function() {

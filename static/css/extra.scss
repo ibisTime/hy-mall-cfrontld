@@ -37,6 +37,9 @@
 .b_e_b{
     border-bottom: 1px solid $border-color;
 }
+.b_e_t{
+    border-top: 1px solid $border-color;
+}
 .over-hide{
     overflow: hidden;
 }
@@ -1343,12 +1346,165 @@ label.error {
     z-index: -1;
     opacity: 0;
 }
+.account-item{
+    display: block;
+    width: 100%;
+    height: 1.6rem;
+    padding: 0 .6rem 0 .3rem;
+    background-color: #fff;
+    position: relative;
+    
+    p{
+        font-size: .32rem;
+        line-height: 1.6rem;
+        
+        samp{
+            font-size: .38rem;
+            color: $primary-color;
+        }
+    }
+    
+    .left-img{
+        position: absolute;
+        top: 50%;
+        right: .3rem;
+        margin-top: -.15rem;
+        
+        img{
+            height: .3rem;
+        }
+    }
+}
+
+.account-wrap {
+    height: 3.4rem;
+
+    &.jf-account-wrap {
+        height: 2rem;
+    }
+
+    .top-infos {
+        width: 6rem;
+        color: #fff;
+        line-height: 1;
+        padding-left: 0;
+
+        .amount-tip {
+            font-size: 0.24rem;
+            text-align: center;
+        }
+
+        .remain-amount {
+            font-size: 0.54rem;
+            padding-top: 0.3rem;
+            text-align: center;
+        }
+
+        .am-flexbox {
+            margin-top: 0.6rem;
+
+            .am-button {
+                width: 2.44rem;
+                background-color: transparent;
+                color: #fff;
+                border: 0.02rem solid #fff;
+                line-height: 0.8rem;
+                font-size: 0.3rem;
+            }
+        }
+    }
+}
+
+.account-flow-list {
+    background: #fff;
+
+    .flow-item {
+        border-bottom: 1px solid $border-color;
+        padding: 0.27rem 0.3rem;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .flow-datetime {
+            .f-date {
+                font-size: 0.32rem;
+            }
+
+            .f-time {
+                font-size: 0.24rem;
+                color: #999;
+            }
+        }
+
+        .flow-icon {
+            margin: 0 0.38rem;
+
+            i {
+                display: inline-block;
+                width: 0.72rem;
+                height: 0.72rem;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 0.72rem 0.72rem;
+
+                &.receive-icon {
+                    @include bg-image('receive');
+                }
+
+                &.pay-icon {
+                    @include bg-image('pay');
+                }
+            }
+        }
+
+        .flow-content {
+            .f-transAmount {
+                font-size: 0.36rem;
+                line-height: 1;
+
+                &.f-trans-red {
+                    color: $primary-color;
+                }
+
+                &.f-trans-blue {
+                    color: #67c3fd;
+                }
+            }
+
+            .flow-remark {
+                line-height: 1;
+                font-size: 0.24rem;
+                padding-top: 0.2rem;
+            }
+        }
+    }
+}
+.xjk-top-wrap{
+    height: 3rem !important;
+}
+.xjk-button{
+    text-align: center;
+    margin-top: .3rem;
+    
+    .am-button{
+        width: 2rem;
+        font-size: .28rem;
+        background-color: transparent;
+        display: inline-block;
+        color: #fff;
+        height: .7rem;
+        line-height: .7rem;
+        border: 1px solid #fff;
+        
+    }
+}
 
 
-
-
-
-
+.becauseWrap{
+    padding: .15rem .3rem;
+    font-size: .26rem;
+}
 
 
 

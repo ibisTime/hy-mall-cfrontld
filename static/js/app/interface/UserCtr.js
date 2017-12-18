@@ -137,5 +137,13 @@ define([
                 ...config
             }, refresh);
         },
+        //绑定c端用户
+        bindCUser(mobile,smsCaptcha){
+            return Ajax.get("805082", {
+                userId: base.getUserId(),
+                mobile,
+                smsCaptcha,
+            }, true);
+        }
     };
 })

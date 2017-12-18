@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>转账</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body>
+	<div class="wp100">
+		<form id="formWrapper" class="form-wrapper">
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title">可转金额</span>
+                    <div class="input-item" id="accountAmount"></div>
+                </div>
+            </div>
+            <div class="form-item border-bottom-1px">
+                <div class="am-flexbox">
+                    <span class="item-title">转账金额</span>
+                    <input type="text" placeholder="请输入转账金额" id="amount" name="amount" class="input-item"/>
+                </div>
+            </div>
+		</form>
+        <div class="register-btn">
+            <button id="subBtn" class="am-button am-button-primary wp100">转账</button>
+        </div>
+	</div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/account/TransferAccounts']);
+    </script>
+</body>
+
+</html>

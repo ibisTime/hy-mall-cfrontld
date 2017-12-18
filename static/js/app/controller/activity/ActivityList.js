@@ -106,12 +106,15 @@ define([
 				<samp class="slogan">报名截止：${base.formatDate(item.enrollEndDatetime, "yyyy-MM-dd")}</samp>
 			</div></a>`
     	
-    	//待支付
+    	
     	if(item.status == "0" || item.status == "2" ){
+    		if(item.status == "2"){
+    			tmplbtnHtml+=`<div class="becauseWrap b_e_t">备注:${item.remark}</div>`
+    		}
     		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>
                             <a class="am-button am-button-small cancel-order" href="../activity/activity-addedit.html?code=${item.code}">修改</a></div>`
     	
-    	//已发布
+    	
     	}else if(item.status == "1"){
     		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small" href="../public/comment2.html?code=${item.code}">查看留言</a></div>`
     	
