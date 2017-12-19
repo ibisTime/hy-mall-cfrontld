@@ -33,9 +33,9 @@ define([
 			var that = this;
 			if(first) {
 				
-        wrap.on("click", ".right-left-cont-back", function(){
-            BMobile.hideMobileCont(defaultOpt.hideFn);
-        });
+		        wrap.on("click", ".right-left-cont-back", function(){
+		            BMobile.hideMobileCont(defaultOpt.hideFn);
+		        });
 				wrap.find(".right-left-cont-title")
 					.on("touchmove", function(e) {
 						e.preventDefault();

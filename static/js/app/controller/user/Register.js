@@ -6,7 +6,6 @@ define([
     'picker',
 ], function(base, UserCtr, Validate, smsCaptcha, Picker) {
     var timer;
-    var userReferee = base.getUrlParam("userReferee");
     
     var first = []; /* 省，直辖市 */
 	var second = []; /* 市 */
@@ -190,15 +189,16 @@ define([
 
 	//注册
     function register(param) {
-        base.showLoading("注册中...");
-        if(userReferee) {
-            param.userReferee = userReferee;
-        }
+        base.showLoading("申请中...");
         UserCtr.register(param)
             .then((data) => {
                 base.hideLoading();
-                base.setSessionUser(data);
-                location.href = "../index.html";
+                base.showMsg("申请成功！请等待审核")
+                
+                setTimeout(function(){
+                	location.href = "./login.html";
+                },500)
+                
             }, () => {
                 $("#getVerification").text("获取验证码").prop("disabled", false);
                 clearInterval(timer);

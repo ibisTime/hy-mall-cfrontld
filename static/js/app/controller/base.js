@@ -337,7 +337,7 @@ define([
         	})
         },
     };
-	if (!/\/redirect\.html/.test(location.href)) {
+	if (!/\/register\.html/.test(location.href)&&!/\/login\.html/.test(location.href)&&!/\/findPwd\.html/.test(location.href)&&!/\/isRock\.html/.test(location.href)) {
 		if(Base.isLogin()){
 			Base.isRock()
 		}

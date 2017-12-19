@@ -161,7 +161,7 @@ define([
 		base.showLoading();
 		ActivityStr.addActivity(params).then(()=>{
 			base.hideLoading();
-			base.showMsg("修改成功！请等待平台审核！")
+			base.showMsg("提交成功！请等待平台审核！")
 			setTimeout(()=>{
 				location.replace("./activity-list.html")
 			},800)
@@ -173,10 +173,10 @@ define([
 		base.showLoading();
 		ActivityStr.editActivity(params).then(()=>{
 			base.hideLoading();
-//			base.showMsg("提交成功！请等待平台审核！")
-//			setTimeout(()=>{
-//				location.replace("./activity-list.html")
-//			},800)
+			base.showMsg("修改成功！请等待平台审核！")
+			setTimeout(()=>{
+				location.replace("./activity-list.html")
+			},800)
 		}, base.hideLoading)
 	}
 	

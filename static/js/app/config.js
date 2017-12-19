@@ -7,7 +7,7 @@ var SYS_USER = 'SYS_USER_HW';
 
 (function() {
 	// 判断是否登录
-	if (!/\/login\.html/.test(location.href)&&!/\/register\.html/.test(location.href)&&!/\/findPwd\.html/.test(location.href)) {
+	if (!/\/login\.html/.test(location.href)&&!/\/register\.html/.test(location.href)&&!/\/findPwd\.html/.test(location.href)&&!/\/isRock\.html/.test(location.href)) {
     var userId = sessionStorage.getItem('userId');
 
     // 未登录

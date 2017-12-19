@@ -9,20 +9,21 @@ define([
         start: 1,
         limit: 10,
         type:'AN',
-		entityCode: code
+		entityCode: code,
+		parentCode: code
     }, isEnd = false, canScrolling = false;
     
     init();
 
 	function init(){
         base.showLoading();
-    	getPageTravelNotesComment();
+    	getPageActComment();
         addListener();
 	}
 	
 	//分页查询游记评论
-	function getPageTravelNotesComment(refresh){
-		return TravelNotesStr.getPageTravelNotesComment(config,refresh).then((data)=>{
+	function getPageActComment(refresh){
+		return GeneralCtr.getPageActComment(config,refresh).then((data)=>{
 			var lists = data.list;
             var totalCount = +data.totalCount;
             if (totalCount <= config.limit || lists.length < config.limit) {
@@ -54,15 +55,19 @@ define([
 	}
 	function buildHtml(item,i){
 		var toComment = "";
+		var bottomWrap="";
 		
-		if(item.parentComment){
+		if(item.childComment){
 			toComment = `<div class="toComment">
-    						<p class="toNickName">回复@<samp>${item.parentComment.nickname}</samp></p>
-    						<p class="toContent">${item.parentComment.content}</p>
+    						<p class="toNickName">领队回复:${item.childComment.content}</p>
     					</div>`;
+		}else{
+			bottomWrap = `<div class="bottomWrap">
+	    					<div class="reply" data-code="${item.code}"><i class="icon"></i><samp>回复</samp></div>
+	    				</div>`
 		}
 		
-		return `<div class="tNcomment-item">
+		return `<div class="tNcomment-item actComment-item">
     				<div class="userPicWrap">
     					<div class="userPic" style="background-image: url('${base.getAvatar(item.photo)}');"></div>
     				</div>
@@ -71,11 +76,9 @@ define([
     						<p class="nickName">${item.nickname}</p>
     						<samp class="updateTime">${base.formatDate(item.commentDatetime,"yyyy-MM-dd hh:mm:ss")}</samp>
     					</div>
-    					${toComment}
     					<div class="content">${item.content}</div>
-    					<div class="bottomWrap">
-	    					<div class="reply" data-code="${item.code}"><i class="icon"></i><samp>回复</samp></div>
-	    				</div>
+    					${toComment}
+    					${bottomWrap}
     				</div>
     			</div>`;
 	}
@@ -118,9 +121,9 @@ define([
 		        	base.hideLoading();
 		        	base.showMsg("留言成功");
 		        	
-		        	setTimeout(function(){
-						location.reload(true)
-		        	},800)
+//		        	setTimeout(function(){
+//						location.reload(true)
+//		        	},800)
 		        	
 		        }, base.hideLoading)
         	}
