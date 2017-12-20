@@ -45,6 +45,13 @@ define([
                 ...config
             }, refresh);
         },
-        
+        // 获取活动报名人数
+        getActJoinIn(code) {
+            return Ajax.get("808709", {code});
+        },
+        // 获取订单详情
+        getOrderDetail(code) {
+            return Ajax.get("808736", {code});
+        },
     };
 })

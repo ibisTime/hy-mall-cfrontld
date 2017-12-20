@@ -13,6 +13,7 @@ define([
 		$.when(
 			getUserSysConfig(),
 			getActivityDetail(),
+			getActJoinIn(),
 			getPageActComment()
 		)
 		addListener()
@@ -98,12 +99,29 @@ define([
         	$("#act_zysx").html(data3.cvalue);
 		});
 	}
+	//获取活动报名人数
+	function getActJoinIn(){
+		return ActivityStr.getActJoinIn(code).then(function(data){
+			var html = ''
+			data.length && data.forEach(function(d, i){
+				if(i<=14){
+					html+=`<div class="photo-item" style="background-image: url('${base.getAvatar(d.photo)}');"></div>`
+				}else{
+					return false;
+				}
+				
+			})
+			$("#photoList").html(html)
+		});
+	}
+	
 	//分页查询评论
 	function getPageActComment(){
 		GeneralCtr.getPageActComment({
 			start:1,
 			limit:3,
-			entityCode: code
+			entityCode: code,
+			parentCode: code
 		}).then((data)=>{
 			var lists = data.list;
 			if(data.list.length) {
@@ -161,6 +179,29 @@ define([
         $("#allTNotesComment").click(function(){
         	location.href="../public/comment2.html?type=AN&code="+code;
         })
+        
+        //删除
+        $("#deleteBtn").on("click", function() {
+            base.confirm('确认删除活动吗？')
+                .then(() => {
+                    base.showLoading("删除中...");
+                	ActivityStr.deleteActivity(code)
+                        .then(() => {
+                        	base.hideLoading();
+                            base.showMsg("操作成功");
+                            
+                            setTimeout(function(){
+					        	config.start = 1
+	                			getPageActivity(true);
+                            },500)
+                        }, base.hideLoading);
+                }, () => {});
+        });
+        
+        //删除
+        $("#editBtn").on("click", function() {
+        	location.href="./activity-addedit.html?code="+code;
+        });
 		
 	}
 })

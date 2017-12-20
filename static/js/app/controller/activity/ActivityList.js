@@ -21,6 +21,9 @@ define([
             "6": '9',
             "7": '5',
         };
+    
+	var timestamp = new Date().getTime()    
+    
     init();
 
 	function init(){
@@ -112,7 +115,7 @@ define([
     			tmplbtnHtml+=`<div class="becauseWrap b_e_t">备注:${item.remark}</div>`
     		}
     		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>
-                            <a class="am-button am-button-small cancel-order" href="../activity/activity-addedit.html?code=${item.code}">修改</a></div>`
+                            <div class="am-button am-button-small editActivity-btn" data-code="${item.code}">修改</div></div>`
     	
     	
     	}else if(item.status == "1"){
@@ -182,6 +185,17 @@ define([
                         }, base.hideLoading);
                 }, () => {});
         });
+        
+        $("#addBtn").click(function(){
+        	location.href = "./activity-addedit.html?timestamp="+timestamp;
+        })
+        
+        $("#content").on("click",".order-item .editActivity-btn",function(){
+        	var actcode = $(this).attr("data-code")
+        	location.href = "./activity-addedit.html?code="+actcode+"&timestamp="+timestamp;
+        })
+        
+        
 	}
 	
 	

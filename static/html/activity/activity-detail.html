@@ -19,7 +19,7 @@
     	<!--<div class="collect" id="collect"></div>-->
     </div>
     
-	<div class="detail-title activityDetail-title bg_fff wp100 ">
+	<div class="detail-title activityDetail-title bg_fff wp100 mb20">
     	<p class="name"></p>
     	<samp class="slogan"></samp>
     	<p class="price1">
@@ -32,12 +32,12 @@
     	</div>
     </div>
     
-    <div class="titleWrap activity-titleWrap mt20">
+    <div class="titleWrap activity-titleWrap hidden" id="enrollNumWrap">
     	<p class="text fl">报名人数</p>
     	<p class="text fr"><samp id="enrollNum"></samp>人<i class="icon"></i></p>
     </div>
-    <div class="photoList bg_fff">
-    	<div class="photo-item" style="background-image: url('../../images/avatar.png');"></div>
+    <div class="photoList bg_fff" id="photoList">
+    	
     </div>
     <div class="difficulty bg_fff">
     	<div class="wrap">
@@ -123,8 +123,8 @@
 	
 	<div style="height: 1.2rem;" id="activity-bottom-height" class="hidden"></div>
 	<div class="activity-bottom fixft bg_fff hidden">
-		<button id="consultBtn" class="am-button am-button-ghost fl">修改</button>
-        <button id="wantPalyBtn" class="am-button am-button-red fr">删除</button>
+		<button id="editBtn" class="am-button am-button-ghost fl">修改</button>
+        <button id="deleteBtn" class="am-button am-button-red fr">删除</button>
 	</div>	
 	
     <link rel="import" href="../footer.html?__inline">

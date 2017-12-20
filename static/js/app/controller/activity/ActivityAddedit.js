@@ -85,10 +85,8 @@ define([
 					fileUploaded: function(up, url, key){
 						$("#advPic .upload-progress-wrap").hide().find(".upload-progress").css("width", 0);
 						
-						var picHtml = `<div class="pic" style="background-image: url('${url}');" 
-									data-url="${key}"></div>`
-						$("#uploadContainerAdvPic").before(picHtml)
-						$("#uploadContainerAdvPic").addClass("hidden")
+						$("#advPic").find('.pic').css({"background-image":"url("+url+")"}).attr("data-url",key)
+						$("#uploadContainerAdvPic").addClass("opacity0")
 					}
 				});
 			}, () => {})
@@ -136,8 +134,8 @@ define([
 				})
 			}
 			
-			$("#uploadContainerAdvPic").before(advPicHtml)
-			$("#uploadContainerAdvPic").addClass("hidden")
+			$("#advPic").find('.pic').css({"background-image":"url("+base.getImg(data.advPic)+")"}).attr("data-url",data.advPic)
+			$("#uploadContainerAdvPic").addClass("opacity0")
 			$("#uploadContainerPic").before(picHtml)
 			
 			startActive($("#indexQd"),data.indexQd)
@@ -257,12 +255,16 @@ define([
         });
 		
 		var start = {
-            elem: '#startDatetime',
+            elem: '#startDatetimeWrap .dateVal',
             format: 'YYYY-MM-DD',
             min: laydate.now(), //设定最小日期为当前日期
             isclear: false, //是否显示清空
             istoday: false,
             choose: function(datas) {
+            	
+            	$("#startDatetime").val(datas);
+            	$("#startDatetimeWrap").find('.dateVal').html(datas);
+            	
                 var d = new Date(datas);
                 d.setDate(d.getDate());
                 datas = d.format('yyyy-MM-dd');
@@ -276,12 +278,16 @@ define([
             }
         };
         var end = {
-            elem: '#endDatetime',
+            elem: '#endDatetimeWrap .dateVal',
             format: 'YYYY-MM-DD',
             min: laydate.now(),
             isclear: false, //是否显示清空
             istoday: false,
             choose: function(datas) {
+            	
+            	$("#endDatetime").val(datas);
+            	$("#endDatetimeWrap").find('.dateVal').html(datas);
+            	
                 var d = new Date(datas);
                 d.setDate(d.getDate());
                 datas = d.format('yyyy-MM-dd');
@@ -289,12 +295,14 @@ define([
             }
         };
         var enrollEndDatetime = {
-            elem: '#enrollEndDatetime',
+            elem: '#enrollEndDatetimeWrap .dateVal',
             format: 'YYYY-MM-DD',
             min: laydate.now(), //设定最小日期为当前日期
             isclear: false, //是否显示清空
             istoday: false,
             choose: function(datas) {
+            	$("#enrollEndDatetime").val(datas);
+            	$("#enrollEndDatetimeWrap").find('.dateVal').html(datas);
             	var d = new Date(datas);
                 d.setDate(d.getDate()+1);
                 datas = d.format('yyyy-MM-dd');
@@ -326,7 +334,7 @@ define([
 	    	if (_formWrapper.valid()) {
 	    		var params = $('#formWrapper').serializeObject();
 	    		var pic='';
-	    		var advPic=$("#advPic").find('.pic').attr("data-url");
+	    		var advPic=$("#advPic").find('.pic').length?$("#advPic").find('.pic').attr("data-url"):'';
 	    		
       			$("#pic").find('.pic').each(function(i, d){
       				pic+=$(this).attr("data-url")
@@ -337,25 +345,31 @@ define([
       			})
       			params.advPic = advPic;
     			params.pic = pic;
-    			params.indexQd = $("#indexQd").attr('data-score');
-    			params.indexNd = $("#indexNd").attr('data-score');
-    			params.indexFj = $("#indexFj").attr('data-score');
-    			params.amount = params.amount*1000
     			
-    			params.placeAsseProvince = $("#placeAsseCityWrap").find(".addressVal").attr("data-prv")
-    			params.placeAsseCity =$("#placeAsseCityWrap").find(".addressVal").attr("data-city")
-    			params.placeDestProvince = $("#placeDestCityWrap").find(".addressVal").attr("data-prv")
-    			params.placeDestCity = $("#placeDestCityWrap").find(".addressVal").attr("data-city")
-
-				base.showLoading();
-				
-	    		if(code){
-	    			params.code = code
-	    			editActivity(params)
-	    		}else{
-	    			addActivity(params)
-	    		}
-	    		
+    			if(params.advPic==''&&!params.advPic){
+    				base.showMsg("请添加广告图")
+    			}else if(params.pic==''&&!params.pic){
+    				base.showMsg("请添加缩略图")
+    			}else{
+	    			params.indexQd = $("#indexQd").attr('data-score');
+	    			params.indexNd = $("#indexNd").attr('data-score');
+	    			params.indexFj = $("#indexFj").attr('data-score');
+	    			params.amount = params.amount*1000
+	    			
+	    			params.placeAsseProvince = $("#placeAsseCityWrap").find(".addressVal").attr("data-prv")
+	    			params.placeAsseCity =$("#placeAsseCityWrap").find(".addressVal").attr("data-city")
+	    			params.placeDestProvince = $("#placeDestCityWrap").find(".addressVal").attr("data-prv")
+	    			params.placeDestCity = $("#placeDestCityWrap").find(".addressVal").attr("data-city")
+	
+					base.showLoading();
+					
+		    		if(code){
+		    			params.code = code
+		    			editActivity(params)
+		    		}else{
+		    			addActivity(params)
+		    		}
+    			}
 		    }
 	    })
 	    

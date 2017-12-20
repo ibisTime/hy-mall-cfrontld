@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <link rel="import" href="../head.html?__inline">
+    <title>报名详情</title>
+    <!--SCRIPT_PLACEHOLDER-->
+</head>
+
+<body class="mallOrderDetailWrap">
+	
+	<div class="orderPro-list mb20" id="activityList"></div>
+	
+	<div class="titleWrap hidden" id="mallListTitle">
+		<p class="fl text">商品清单</p>
+	</div>
+	<div class="orderPro-list" id="mallList"></div>
+	
+	<div class="titleWrap mt20 hidden" id="leaseListTitle">
+		<p class="fl text">租赁清单</p>
+	</div>
+	<div class="orderPro-list" id="leaseList"></div>
+	
+	<div class="actOrderAmount b_e_t mb20">
+		<p class="wp100 amount actAmount">活动总额：<samp></samp></p>
+		<p class="wp100 amount mallAmount hidden">商品总额：<samp></samp></p>
+		<p class="wp100 amount leaseAmount hidden">租赁总额：<samp></samp></p>
+		<p class="wp100 totalAmount">总金额：<samp class="tcolor_red"></samp></p>
+	</div>
+	
+	<div class="titleWrap hidden" id="toUser">
+		<p class="fl text">配送方式</p>
+		<p class="fr text toUserName"><samp></samp></p>
+	</div>
+	<div class="storeAddress hidden" id="storeAddress"></div>
+	<div class="orderAddress hidden b_e_b" id="orderAddress"></div>
+	<div class="orderAddress hidden orderExpress" id="expressDelivery"></div>
+	
+	<div class="orderApplyNote mt20 hidden yunfeiWrap">
+		<div class="fl title">运费</div>
+		<div class="textarea" id="yunfei"></div>
+	</div>
+	
+	<div class="orderApplyNote mt20">
+		<div class="fl title">备注</div>
+		<div class="textarea" id="applyNote"></div>
+	</div>
+	
+	<div class="mt20 orderInfo" id="orderInfo"></div>
+	
+    <link rel="import" href="../footer.html?__inline">
+    <script>
+        require(['app/controller/order/OrderDetail']);
+    </script>
+</body>
+
+</html>

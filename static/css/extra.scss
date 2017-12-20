@@ -60,6 +60,12 @@ label.error {
 .tcolor_primary{
     color: $primary-color !important;
 }
+
+.am-button-primary-48 {
+    font-size: .28rem;
+    color: #484848;
+    background-color: $primary-color;
+}
 .mask{
     width: 100%;
     height: 100%;
@@ -406,6 +412,7 @@ label.error {
         width: 100%;
         overflow: hidden;
         flex: 1;
+        position: relative;
         
         .pic{
             width: 1.6rem;
@@ -469,8 +476,38 @@ label.error {
         }
     }
     
-    
+    .advPic{
+        .fileWrap{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            
+            &.opacity0{
+                opacity: 0;
+            }
+        }
+    }
+    .am-flexbox{
+        overflow: hidden;
+        position: relative;
+        z-index: 9;
+    }
     .form-item{
+        .input-wrap{
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 9;
+            
+            .item-title{
+                display: inline-block;
+            }
+            .input-item{
+                flex: none;
+                width: 5rem;
+            }
+        }
         .textarea-wrap{
             padding-left: 1.6rem;
             position: relative;
@@ -480,6 +517,15 @@ label.error {
                 top: 0;
                 left: 0;
             }
+        }
+        .dateVal{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            opacity: 0;
         }
     }
     
@@ -1254,28 +1300,25 @@ label.error {
 .tNDetail-bottom{
     width: 100%;
     height: 0.98rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 101;
     background-color: #fff;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid #eee;
+    padding: .15rem .3rem;
     
     .inputWrap{
         width: 6rem;
-        height: .68rem;
+        height: 100%;
         border: 1px solid $border-color;
         padding: .1rem .2rem;
         border-radius: .08rem;
-        margin-left: .3rem;
-        margin-top: .15rem;
         
-        input{
+        .tNotesForm-comCon{
+            resize: none;
             width: 100%;
+            height: 100%;
             color: #333;
-            line-height: 1;
             font-size: .26rem;
         }
+        
     }
     
     .comBtn{
@@ -1286,8 +1329,17 @@ label.error {
         background-position: center;
         background-size: auto .4rem;
         margin-left: .1rem;
+        position: absolute;
+        bottom: 0;
+        right: 0.2rem;
+        z-index: 99;
     }
-    
+}
+.tNDetail-bottom-wrap{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
 }
 
 .activityAddBtn{
@@ -1510,10 +1562,177 @@ label.error {
         margin-top: .2rem;
     }
 }
-
-
-
-
+.actOrderAmount{
+    width: 100%;
+    overflow: hidden;
+    padding: .2rem .3rem;
+    background-color: #fff;
+    
+    .amount{
+        font-size: .24rem;
+        
+        i{
+            font-style: normal;
+            color: #999;   
+        }
+    }
+    .totalAmount{
+        font-size: .3rem;
+        margin-top: .05rem;
+        i{
+            font-size: .24rem;
+            font-style: normal;
+            color: #999;   
+        }
+    }
+}
+.orderApplyNote{
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    padding: .3rem 0 .1rem;
+    
+    .title{
+        font-size: .28rem;
+        position: absolute;
+        top: .3rem;
+        left: .3rem;
+        z-index: 11;
+    }
+    
+    .textarea{
+        width: 100%;
+        height: 1rem;
+        padding: 0 .3rem 0 1.8rem;
+        font-size: .28rem;
+    }
+    
+}
+.mallOrderDetailWrap{
+    .orderAddress{
+        background: none;
+        background-color: #fff;
+        
+        .icon{
+            width: .4rem;
+            background-size: .26rem;
+            
+            &.icon-dz{
+                left: .25rem;
+            }
+        }
+    }
+    
+    .orderExpress{
+        .icon-dz{
+            background-image: url('../images/快递@2x.png');
+            background-size: .3rem;
+        }
+    }
+    
+    .storeAddress{
+        background-color: #fff;
+        padding: .3rem;
+    }
+    
+    .orderInfo{
+        background-color: #fff;
+        padding: .3rem .3rem .2rem;
+        
+        p{
+            font-size: .28rem;
+            margin-bottom: .1rem;
+        }
+    }
+    
+    .orderApplyNote{
+        padding: .3rem 0 .3rem;
+        
+        .textarea{
+            height: auto;
+        }
+    }
+    
+    
+    .mallBottom{
+        padding: 0 .3rem;
+        
+        .am-button{
+            height: .8rem;
+            margin-top: .1rem;
+        }
+        
+        .payBtn,.cancelBtn{
+            width: 3.3rem;
+        }
+    }
+}
+#activityList.orderPro-list .mall-item .mall-item-con{
+    line-height: 1;
+    
+    .name{
+        line-height: 1.4;
+    }
+    
+    .slogan{
+        line-height: 1.2;
+    }
+    .samp1{
+        margin-right: .05rem;
+    }
+    .realDeposit{
+        font-size: .24rem;
+        color: #999;
+    }
+}
+.activityAddEditBody{
+    .laydate_box{
+        left: 1.6rem !important;
+        margin-top: -.1rem;
+    }
+}
+.tNotes-dsDialog{
+    .am-modal-footer{
+        text-align: center;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        
+        .am-button{
+            width: 1.6rem;
+            display: inline-block;
+            color: #fff;
+        }
+        .am-button-cancel{
+            background-color: #DDDDDD;
+            margin-right: .5rem;
+        }
+        
+    }
+}
+.com-dsDialog{
+     .inputWrap{
+        width: 100%;
+        height: 2rem;
+        border: 1px solid $border-color;
+        padding: .1rem .2rem;
+        border-radius: .08rem;
+    }
+    .tNotesForm-comCon{
+        resize: none;
+        width: 100%;
+        height: 100%;
+        color: #333;
+        font-size: .3rem;
+        line-height: 1.5;
+    }
+    .am-modal .am-modal-body{
+        padding: .3rem .6rem;
+    }
+    .am-modal .am-modal-footer{
+        padding-top: 0;
+        padding-bottom: .3rem;
+    }
+}
 
 
 

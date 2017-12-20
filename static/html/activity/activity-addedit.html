@@ -7,7 +7,7 @@
     <!--SCRIPT_PLACEHOLDER-->
 </head>
 
-<body>
+<body class="activityAddEditBody">
 	<div class="activityAddEdit-wrapper">
         <form id="formWrapper" class="form-wrapper">
             <div class="form-item border-bottom-1px">
@@ -30,23 +30,26 @@
                     <input type="text" placeholder="请输入广告语" id="slogan" name="slogan" class="input-item"/>
                 </div>
             </div>
-            <div class="form-item border-bottom-1px">
-                <div class="am-flexbox">
-                    <span class="item-title mr20">开始时间</span>
-                    <input type="text" placeholder="请输入开始时间" id="startDatetime" name="startDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+            <div class="form-item border-bottom-1px" id="startDatetimeWrap">
+                <div class="input-wrap">
+                    <span class="item-title mr20 fl">开始时间</span>
+                    <input type="text" placeholder="请输入开始时间" id="startDatetime" name="startDatetime" class="input-item fl" data-format="yyyy-MM-dd"/>
                 </div>
+                <div class="input-item placeholder dateVal"></div>
             </div>
-            <div class="form-item border-bottom-1px">
-                <div class="am-flexbox">
-                    <span class="item-title mr20">结束时间</span>
-                    <input type="text" placeholder="请输入结束时间" id="endDatetime" name="endDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+            <div class="form-item border-bottom-1px"  id="endDatetimeWrap">
+                <div class="input-wrap">
+                    <span class="item-title mr20 fl">结束时间</span>
+                    <input type="text" placeholder="请输入结束时间" id="endDatetime" name="endDatetime" class="input-item fl" data-format="yyyy-MM-dd"/>
                 </div>
+                <div class="input-item placeholder dateVal"></div>
             </div>
-            <div class="form-item border-bottom-1px">
-                <div class="am-flexbox">
-                    <span class="item-title mr20">报名截止时间</span>
-                    <input type="text" placeholder="请输入报名截止时间" id="enrollEndDatetime" name="enrollEndDatetime" class="input-item" data-format="yyyy-MM-dd"/>
+            <div class="form-item border-bottom-1px" id="enrollEndDatetimeWrap">
+                <div class="input-wrap">
+                    <span class="item-title mr20 fl">报名截止时间</span>
+                    <input type="text" placeholder="请输入报名截止时间" id="enrollEndDatetime" name="enrollEndDatetime" class="input-item fl" data-format="yyyy-MM-dd" style="margin-top: .25rem;"/>
                 </div>
+                <div class="input-item placeholder dateVal"></div>
             </div>
             <div class="form-item border-bottom-1px" id="placeDestCityWrap">
 	            <div class="am-flexbox">
@@ -89,9 +92,8 @@
             <div class="form-item border-bottom-1px">
                 <div class="am-flexbox textarea-wrap">
                     <span class="item-title mr20">广告图</span>
-	                <div class="picWrap" id="advPic">
-			    		<!--<div class="pic" style="background-image: url('../../images/default-bg.png');" data-url="../../images/default-bg.png"><i class="delete"></i></div>
-			    		<div class="pic" style="background-image: url('../../images/图层-50@2x.png');" data-url="../../images/图层-50@2x.png"><i class="delete"></i></div>-->
+	                <div class="picWrap advPic" id="advPic">
+			    		<div class="pic"></div>
 			    		<div id="uploadContainerAdvPic" class="fileWrap">
 					    	<div id="uploadBtnAdvPic" class="wp100 hp100">
 					            <div class="addbackPdf"></div>

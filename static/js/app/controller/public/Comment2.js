@@ -106,7 +106,7 @@ define([
         $("#comBtn").click(function(){
         	var comCode = $(this).attr("data-code");
         	
-        	if($("#tNotesForm-comCon").val()){
+        	if($("#tNotesForm-comCon").val()&&$("#tNotesForm-comCon").val().replace(/[ ]/g,"")){
         		base.showLoading();
         		
     			GeneralCtr.comment({
@@ -115,39 +115,57 @@ define([
 		        	entityCode: code,
 		        	type: "AN"
 		        }).then(()=>{
-		        	
+		        	$("#tNDetail-bottom").removeClass("focus").addClass("blur")
 		        	$("#mask").addClass("hidden")
 		    		$("#tNotesForm-comCon").val("")
 		        	base.hideLoading();
 		        	base.showMsg("留言成功");
 		        	
-//		        	setTimeout(function(){
-//						location.reload(true)
-//		        	},800)
+		        	setTimeout(function(){
+						location.reload(true)
+		        	},800)
 		        	
 		        }, base.hideLoading)
+        	}else{
+        		base.showMsg("请输入内容")
         	}
         }) 
-        
+        var touchFalg=false;
         //输入框获取焦点
-        $("#tNotesForm-comCon").on("focus",function(){
-        	$("#mask").removeClass("hidden");
-        })
         
-        //遮罩层
-        $("#mask").click(function(){
-        	$("#mask").addClass("hidden")
+        $("#tNDetail-bottom").on("click",function(){
+        	$("#comDialog").removeClass("hidden");
+        	$("#tNDetail-bottom").addClass("hidden");
+        	$("#tNotesForm-comCon").focus();
         	
+        	touchFalg = true;
+        	$('body').on('touchmove',function(e){
+				if(touchFalg){
+					e.preventDefault();
+				}
+			})
+        })
+         $("#comDialog").on("click", ".canlce", function(){
+        	
+        	$("#tNDetail-bottom").removeClass("hidden");
+        	$("#comDialog").addClass("hidden");
         	//回复时
         	if($("#comBtn").attr("data-code")){
         		$("#comBtn").attr("data-code",'')
         		$("#tNotesForm-comCon").val("")
         	}
+        	
+        	touchFalg = false
+        	$('body').on('touchmove',function(e){
+				if(touchFalg){
+					e.preventDefault();
+				}
+			})
         })
         
         //回复点击
         $("#tNcommentList").on("click",".tNcomment-item .bottomWrap .reply",function(){
-    		$("#tNotesForm-comCon").val("")
+    		$("#tNDetail-bottom").click()
         	reply($(this).attr("data-code"));
         })
         

@@ -20,7 +20,7 @@ define([
             return Ajax.post(sendCode, {
                 bizType,
                 mobile,
-                "kind": "C"
+                "kind": "OL"
             });
         },
         // 获取转化汇率
@@ -37,7 +37,7 @@ define([
         getPageSysNotice(config, refresh) {
             return Ajax.get("804040", {
                 "pushType": 41,
-                "toKind": 'C',
+                "toKind": 'OL',
                 "channelType": 4,
                 "status": 1,
                 "fromSystemCode": SYSTEM_CODE,

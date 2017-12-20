@@ -63,7 +63,7 @@ define([
     function buildHtml(item) {
     	var tmplProHtml = '';
     	
-		tmplProHtml+=`<div class="mall-item leaseOrder-item activity-item">
+		tmplProHtml+=`<a class="mall-item leaseOrder-item activity-item" href="./order-detail.html?code=${item.code}">
 		<div class="mall-item-img fl" style="background-image: url('${base.getImg(item.activity.advPic)}')"></div>
 		<div class="mall-item-con fr">
 			<p class="name">活动名称:${item.activity.name}</p>
@@ -78,7 +78,7 @@ define([
                         <span class="fr tcolor_red">${orderStatus[item.status]}</span>
                     </div>
                     <div class="orderPro-list">`+tmplProHtml+`</div>
-                    </div>`;
+                </div>`;
 
     }
 	
