@@ -63,10 +63,20 @@ define([
 			$("#equipment").html(data.equipment)
 			$("#enrollNum").html(data.enrollNum)
 			
-			
+			//审核中和审核不通过
 			if(data.status == "0" || data.status == "2"){
 				$(".activity-bottom").removeClass("hidden");
 				$("#activity-bottom-height").removeClass("hidden");
+			}else{
+				$("#goliuyan").removeClass("hidden");
+				//留言点击
+		        $("#goliuyan").click(function(){
+		        	location.href="../public/comment2.html?type=AN&code="+code;
+		        })
+		        //查看更多留言 点击
+		        $("#allTNotesComment").click(function(){
+		        	location.href="../public/comment2.html?type=AN&code="+code;
+		        })
 			}
 			base.hideLoading()
 		}, base.hideLoading)
@@ -171,15 +181,6 @@ define([
 			$(".contentWrap").eq($(this).index()).removeClass("hidden").siblings(".contentWrap").addClass("hidden");
 		})
 		
-		//留言点击
-        $("#goliuyan").click(function(){
-        	location.href="../public/comment2.html?type=AN&code="+code;
-        })
-        //查看更多留言 点击
-        $("#allTNotesComment").click(function(){
-        	location.href="../public/comment2.html?type=AN&code="+code;
-        })
-        
         //删除
         $("#deleteBtn").on("click", function() {
             base.confirm('确认删除活动吗？')

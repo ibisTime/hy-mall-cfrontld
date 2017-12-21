@@ -334,7 +334,7 @@ define([
 	    	if (_formWrapper.valid()) {
 	    		var params = $('#formWrapper').serializeObject();
 	    		var pic='';
-	    		var advPic=$("#advPic").find('.pic').length?$("#advPic").find('.pic').attr("data-url"):'';
+	    		var advPic=$("#advPic").find('.pic').attr("data-url")?$("#advPic").find('.pic').attr("data-url"):'';
 	    		
       			$("#pic").find('.pic').each(function(i, d){
       				pic+=$(this).attr("data-url")

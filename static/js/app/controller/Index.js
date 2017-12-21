@@ -26,7 +26,11 @@ define([
 	        start: 1,
 	        limit: 1
     	}, true).then(function(data) {
-        	$("#goNotice").html(data.list[0].smsTitle)
+    		if(data.list.length>0){
+        		$("#goNotice").html(data.list[0].smsTitle)
+    		}else{
+        		$("#goNotice").html("暂无公告")
+    		}
     	});
     }
     
