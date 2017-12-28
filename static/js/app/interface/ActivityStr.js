@@ -53,5 +53,9 @@ define([
         getOrderDetail(code) {
             return Ajax.get("808736", {code});
         },
+        // 成团
+        successGroup(code) {
+            return Ajax.get("808715", {code});
+        },
     };
 })
