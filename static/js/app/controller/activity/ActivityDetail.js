@@ -5,6 +5,7 @@ define([
     'app/interface/ActivityStr'
 ], function(base, Swiper, GeneralCtr, ActivityStr) {
 	var code = base.getUrlParam("code");
+	var actName = '';
     init();
 
 	function init(){
@@ -44,6 +45,8 @@ define([
 				$("#top-swiper").html(`<div class="swiper-slide"><div class="mallDetail-img" style="background-image: url('${base.getImg(dpic)}')"></div></div>`);
 			}
 			
+			actName = data.name;
+			
 			$('title').html(data.name+'-活动详情');
 	        
 	        $(".detail-title .name").html(data.name)
@@ -52,6 +55,8 @@ define([
 			$(".detail-title .enrollEndDatetime").text(base.formatDate(data.enrollEndDatetime, "yyyy-MM-dd"))
 			$(".detail-title .data").text(base.formatDate(data.startDatetime, "yyyy-MM-dd")+"至"+base.formatDate(data.endDatetime, "yyyy-MM-dd"))
 			$(".detail-title .userNum").text(data.groupNum)
+			$(".detail-title .placeAsse").text(data.placeAsseProvince+" "+data.placeAsseCity+" "+data.placeAsse)
+			$(".detail-title .placeDest").text(data.placeDestProvince+" "+data.placeDestCity+" "+data.placeDest)
 			
 			startActive($("#indexQd"),data.indexQd)
 			startActive($("#indexNd"),data.indexNd)
@@ -71,11 +76,11 @@ define([
 				$("#goliuyan").removeClass("hidden");
 				//留言点击
 		        $("#goliuyan").click(function(){
-		        	location.href="../public/comment2.html?type=AN&code="+code;
+		        	location.href="../public/comment2.html?type=AN&code="+code+"&name="+actName;
 		        })
 		        //查看更多留言 点击
 		        $("#allTNotesComment").click(function(){
-		        	location.href="../public/comment2.html?type=AN&code="+code;
+		        	location.href="../public/comment2.html?type=AN&code="+code+"&name="+actName;
 		        })
 			}
 			base.hideLoading()
@@ -203,6 +208,34 @@ define([
         $("#editBtn").on("click", function() {
         	location.href="./activity-addedit.html?code="+code;
         });
+        
+        //免责申明 查看更多 点击
+        $("#act_mzsm_more").click(function(){
+        	if($(this).hasClass("active")){
+        		$(this).removeClass("active");
+        		$(this).html("查看更多")
+        		$(this).css("max-height","10rem")
+        		$("#act_mzsm").css("max-height","10rem")
+        	}else{
+        		$("#act_mzsm").css("max-height","none")
+        		$(this).addClass("active");
+        		$(this).html("收起")
+        	}
+        })
+        
+        //免责申明 查看更多 点击
+        $("#act_enroll_more").click(function(){
+        	if($(this).hasClass("active")){
+        		$(this).removeClass("active");
+        		$(this).html("查看更多")
+        		$(this).css("max-height","10rem")
+        		$("#act_enroll").css("max-height","10rem")
+        	}else{
+        		$("#act_enroll").css("max-height","none")
+        		$(this).addClass("active");
+        		$(this).html("收起")
+        	}
+        })
 		
 	}
 })

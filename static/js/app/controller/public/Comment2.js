@@ -4,6 +4,7 @@ define([
     'app/interface/TravelNotesStr',
     'app/interface/GeneralCtr',
 ], function(base, Validate, TravelNotesStr, GeneralCtr) {
+    var actName = base.getUrlParam("name")||'';
     var code = base.getUrlParam("code");
     var config = {
         start: 1,
@@ -113,7 +114,8 @@ define([
 		        	content:$("#tNotesForm-comCon").val(),
 		        	parentCode: comCode?comCode:code,
 		        	entityCode: code,
-		        	type: "AN"
+		        	type: "AN",
+		        	entityName: actName
 		        }).then(()=>{
 		        	$("#tNDetail-bottom").removeClass("focus").addClass("blur")
 		        	$("#mask").addClass("hidden")
