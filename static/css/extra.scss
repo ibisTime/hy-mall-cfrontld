@@ -1612,6 +1612,50 @@ label.error {
     }
     
 }
+.orderAddress{
+    width: 100%;
+    padding: .3rem .9rem .3rem .9rem;
+    position: relative;
+    
+    .icon{
+        width: .2rem;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        
+        &.icon-dz{
+            width: .26rem;
+            left: .3rem;
+            background-image: url('../images/收货地址@2x.png');
+        }
+        
+        &.icon-more{
+            right: .3rem;
+            background-image: url('../images/更多-首页@2x.png');
+        }
+    }
+    
+    .addressee, .mobile{
+        font-size: .28rem;
+    }
+    
+    .backPdf{
+        max-width: 100%;
+        height: 1.8rem;
+        vertical-align: bottom;
+        margin-top: .1rem;
+    }
+    .detailAddress{
+        font-size: .26rem;
+        margin-top: .15rem;
+        line-height: 1.5;
+    }
+    
+    
+}
 .mallOrderDetailWrap{
     .orderAddress{
         background: none;

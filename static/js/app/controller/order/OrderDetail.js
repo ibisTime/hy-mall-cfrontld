@@ -60,7 +60,7 @@ define([
 					data.orderData.productOrderList.forEach(function(d, i){
 						var price = d.price2 ? base.formatMoney(d.price2)+'积分' : '￥'+base.formatMoney(d.price1)
 						
-						mallHtmlPro += `<a class="mall-item" href="../mall/mallDetail.html?code=${d.productCode}">
+						mallHtmlPro += `<div class="mall-item">
 			    		<div class="mall-item-img fl" style="background-image: url('${base.getImg(d.product.advPic)}');"></div>
 			    		<div class="mall-item-con fr">
 			    			<p class="name">${d.product.name}</p>
@@ -68,7 +68,7 @@ define([
 			    			<div class="price wp100">
 			    				<samp class="samp1 fl">${price}</samp>
 			    				<samp class="samp2 fr">x${d.quantity}</samp>
-			    			</div></div></a>`;
+			    			</div></div></div>`;
 					})
 					$("#mallList").html(mallHtmlPro);
 					$("#mallListTitle").removeClass('hidden');
@@ -85,7 +85,7 @@ define([
 					data.rorderList.forEach(function(d, i){
 						var price = d.price2 ? base.formatMoney(d.price2)+'积分' : '￥'+base.formatMoney(d.price1)
 						
-						leaseHtmlPro += `<a class="mall-item" href="../lease/lease-detail.html?code=${d.rproduct.code}">
+						leaseHtmlPro += `<div class="mall-item">
 						<div class="mall-item-img fl" style="background-image: url('${base.getImg(d.rproduct.advPic)}')"></div>
 						<div class="mall-item-con fr">
 							<p class="name">${d.rproduct.name}</p>
@@ -95,7 +95,7 @@ define([
 								<samp class="samp1">￥${base.formatMoney(d.amount1)}</samp>
 								<samp class="realDeposit">(含押金: ${'￥'+base.formatMoney(d.realDeposit)})</samp>
 							</div>
-							</div></a>`;
+							</div></div>`;
 						realDeposit += d.realDeposit;
 						rproductAmount += d.amount1;
 						
