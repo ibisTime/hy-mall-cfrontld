@@ -68,11 +68,24 @@ define([
 			$("#equipment").html(data.equipment)
 			$("#enrollNum").html(data.enrollNum)
 			
-			//审核中和审核不通过
-			if(data.status == "0" || data.status == "2"){
+			//待发布时 显示 删除和发布
+			if(data.status == "0"){
+	    		
 				$(".activity-bottom").removeClass("hidden");
 				$("#activity-bottom-height").removeClass("hidden");
-			}else{
+				$("#upActivityBtn").removeClass("hidden");
+				$("#deleteBtn").removeClass("hidden");
+			
+			//已发布时显示 成团按钮，
+	    	}else if(data.status == "1"){
+	    		
+				$(".activity-bottom").removeClass("hidden");
+				$("#activity-bottom-height").removeClass("hidden");
+				$("#successGroupBtn").removeClass("hidden");
+	    	}
+	    	
+			//除了待发布都可可查看留言
+			if(data.status != "0"){
 				$("#goliuyan").removeClass("hidden");
 				//留言点击
 		        $("#goliuyan").click(function(){
@@ -80,6 +93,11 @@ define([
 		        })
 		        //查看更多留言 点击
 		        $("#allTNotesComment").click(function(){
+		        	location.href="../public/comment2.html?type=AN&code="+code+"&name="+actName;
+		        })
+		        
+		        //查看更多留言 点击
+		        $("#goLookliuyan").click(function(){
 		        	location.href="../public/comment2.html?type=AN&code="+code+"&name="+actName;
 		        })
 			}
@@ -197,16 +215,10 @@ define([
                             base.showMsg("操作成功");
                             
                             setTimeout(function(){
-					        	config.start = 1
-	                			getPageActivity(true);
+					        	location.replace("./activity-list.html");
                             },500)
                         }, base.hideLoading);
                 }, () => {});
-        });
-        
-        //删除
-        $("#editBtn").on("click", function() {
-        	location.href="./activity-addedit.html?code="+code;
         });
         
         //免责申明 查看更多 点击
@@ -237,5 +249,40 @@ define([
         	}
         })
 		
+		//发布
+        $("#upActivityBtn").on("click", function() {
+            base.confirm('确认发布活动吗？')
+                .then(() => {
+                    base.showLoading("操作中...");
+                	ActivityStr.upActivity(code)
+                        .then(() => {
+                        	base.hideLoading();
+                            base.showMsg("操作成功");
+                            
+                            setTimeout(function(){
+					        	location.reload(true)
+                            },500)
+                        }, base.hideLoading);
+                }, () => {});
+        });
+        
+        //成团
+        $("#successGroupBtn").on("click", function() {
+            base.confirm('确认成团吗？')
+                .then(() => {
+                    base.showLoading("操作中...");
+                	ActivityStr.successGroup(code)
+                        .then(() => {
+                        	base.hideLoading();
+                            base.showMsg("操作成功");
+                            
+                            setTimeout(function(){
+					        	config.start = 1
+	                			getPageActivity(true);
+                            },500)
+                        }, base.hideLoading);
+                }, () => {});
+        });
+        
 	}
 })

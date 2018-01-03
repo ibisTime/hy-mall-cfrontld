@@ -14,7 +14,6 @@ define([
         type2Status = {
             "0": '',
             "1": '0',
-            "2": '2',
             "3": '1',
             "4": '4',
             "5": '3',
@@ -114,10 +113,10 @@ define([
     		if(item.status == "2"){
     			tmplbtnHtml+=`<div class="becauseWrap b_e_t">备注:${item.remark}</div>`
     		}
-    		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>`
-    		//<div class="am-button am-button-small editActivity-btn" data-code="${item.code}">修改</div></div>
+    		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>
+    					<div class="am-button am-button-small upActivity-btn" data-code="${item.code}">发布</div></div>`
     	}else if(item.status == "1"){
-    		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small" href="../public/comment2.html?code=${item.code}">查看留言</a>
+    		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small" href="../public/comment2.html?code=${item.code}&name=${item.name}">查看留言</a>
     						<div class="am-button am-button-small successGroup-btn" data-code="${item.code}">成团</div></div>`
     	
     	}
@@ -186,7 +185,7 @@ define([
         });
         
         
-        //删除
+        //成团
         $("#content").on("click", ".successGroup-btn", function() {
             var code = $(this).attr("data-code");
             base.confirm('确认成团吗？')
@@ -213,6 +212,25 @@ define([
         	var actcode = $(this).attr("data-code")
         	location.href = "./activity-addedit.html?code="+actcode+"&timestamp="+timestamp;
         })
+        
+        //发布
+        $("#content").on("click", ".upActivity-btn", function() {
+            var code = $(this).attr("data-code");
+            base.confirm('确认发布活动吗？')
+                .then(() => {
+                    base.showLoading("操作中...");
+                	ActivityStr.upActivity(code)
+                        .then(() => {
+                        	base.hideLoading();
+                            base.showMsg("操作成功");
+                            
+                            setTimeout(function(){
+					        	config.start = 1
+	                			getPageActivity(true);
+                            },500)
+                        }, base.hideLoading);
+                }, () => {});
+        });
         
         
 	}

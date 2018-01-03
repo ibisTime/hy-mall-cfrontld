@@ -57,5 +57,9 @@ define([
         successGroup(code) {
             return Ajax.get("808715", {code});
         },
+        // 发布活动
+        upActivity(code) {
+            return Ajax.get("808703", {code});
+        },
     };
 })

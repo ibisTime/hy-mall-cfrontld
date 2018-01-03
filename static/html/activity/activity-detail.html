@@ -91,7 +91,7 @@
 	<div class="activity-detail bg_fff mt20">
 		<div class="title b_e_b">
 			<p class="text fl"><i class="icon icon-liuyan"></i><samp>留言区</samp></p>
-			<a class="text fr tcolor_primary hidden" id="goliuyan">去留言</a>
+			<a class="text fr tcolor_primary hidden" id="goliuyan">查看留言</a>
 		</div>
 		<div class="tNotes-comment">
 			<div id="tNcommentList" class="wrap goTNcommentList"></div>
@@ -104,7 +104,7 @@
 		<div class="title b_e_b">
 			<p class="text fl"><i class="icon icon-baoming"></i><samp>报名须知</samp></p>
 		</div>
-		<div class="detail ptb20lr30" id="act_enroll" style="max-height: 10rem;"></div>
+		<div class="detail ptb20lr30 over-hide" id="act_enroll" style="max-height: 10rem;"></div>
 		<div class="tc wp100 ptb20lr30 tcolor_primary" id="act_enroll_more">查看更多</div>
 	</div>
 	
@@ -113,7 +113,7 @@
 		<div class="title b_e_b">
 			<p class="text fl"><i class="icon icon-mianze"></i><samp>免责申明</samp></p>
 		</div>
-		<div class="detail ptb20lr30" id="act_mzsm" style="max-height: 10rem;"></div>
+		<div class="detail ptb20lr30 over-hide" id="act_mzsm" style="max-height: 10rem;"></div>
 		<div class="tc wp100 ptb20lr30 tcolor_primary" id="act_mzsm_more">查看更多</div>
 	</div>
 	
@@ -127,8 +127,10 @@
 	
 	<div style="height: 1.2rem;" id="activity-bottom-height" class="hidden"></div>
 	<div class="activity-bottom fixft bg_fff hidden">
-		<button id="editBtn" class="am-button am-button-ghost fl">修改</button>
-        <button id="deleteBtn" class="am-button am-button-red fr">删除</button>
+		<button id="upActivityBtn" class="am-button am-button-ghost fl hidden">发布</button>
+        <button id="deleteBtn" class="am-button am-button-red fr hidden">删除</button>
+        
+		<button id="successGroupBtn" class="am-button am-button-red fl hidden" style="width: 100% !important;">成团</button>
 	</div>	
 	
     <link rel="import" href="../footer.html?__inline">
