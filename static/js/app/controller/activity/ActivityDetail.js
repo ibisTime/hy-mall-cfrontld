@@ -55,8 +55,14 @@ define([
 			$(".detail-title .enrollEndDatetime").text(base.formatDate(data.enrollEndDatetime, "yyyy-MM-dd"))
 			$(".detail-title .data").text(base.formatDate(data.startDatetime, "yyyy-MM-dd")+"至"+base.formatDate(data.endDatetime, "yyyy-MM-dd"))
 			$(".detail-title .userNum").text(data.groupNum)
-			$(".detail-title .placeAsse").text(data.placeAsseProvince+" "+data.placeAsseCity+" "+data.placeAsse)
-			$(".detail-title .placeDest").text(data.placeDestProvince+" "+data.placeDestCity+" "+data.placeDest)
+			
+			var placeAsseProvince = data.placeAsseProvince=='其他'?'':data.placeAsseProvince+" ";
+			var placeAsseCity = data.placeAsseCity=='其他'?'':data.placeAsseCity+" ";
+			var placeDestProvince = data.placeDestProvince=='其他'?'':data.placeDestProvince+" ";
+			var placeDestCity = data.placeDestCity=='其他'?'':data.placeDestCity+" ";
+			
+			$(".detail-title .placeAsse").text(placeAsseProvince+placeAsseCity+data.placeAsse)
+			$(".detail-title .placeDest").text(placeDestProvince+placeDestCity+data.placeDest)
 			
 			startActive($("#indexQd"),data.indexQd)
 			startActive($("#indexNd"),data.indexNd)
@@ -67,6 +73,7 @@ define([
 			$("#scheduling").html(data.scheduling)
 			$("#equipment").html(data.equipment)
 			$("#enrollNum").html(data.enrollNum)
+			$("#placeDesc").html(data.placeDesc)
 			
 			//待发布时 显示 删除和发布
 			if(data.status == "0"){
