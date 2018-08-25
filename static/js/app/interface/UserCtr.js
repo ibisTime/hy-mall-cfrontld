@@ -144,6 +144,12 @@ define([
                 mobile,
                 smsCaptcha,
             }, true);
-        }
+        },
+        // 获取用领队收益详情
+        getMyIncome() {
+            return Ajax.get("808072", {
+                "userId": base.getUserId()
+            }, true);
+        },
     };
 })

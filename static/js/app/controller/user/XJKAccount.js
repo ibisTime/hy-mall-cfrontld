@@ -20,10 +20,20 @@ define([
         
         $.when(
             getAccount(),
+            getMyIncome(),
             getUser()
         ).then(base.hideLoading);
         addListener();
     }
+    
+    //获取收益详情
+    function getMyIncome(){
+    	return UserCtr.getMyIncome().then(function(data) {
+    		$("#backAmount").text(base.formatMoney(data.backAmount));
+    		$("#unbackAmount").text(base.formatMoney(data.unbackAmount));
+	    });
+    }
+    
     // 获取账户信息
     function getAccount() {
         return AccountCtr.getAccount()
@@ -37,6 +47,7 @@ define([
                 getPageFlow().then(base.hideLoading);
             });
     }
+    
     function getUser() {
         return UserCtr.getUser()
             .then((data) => {

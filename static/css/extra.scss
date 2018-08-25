@@ -19,6 +19,9 @@
 .ml30{
     margin-left: .3rem;
 }
+.ml50{
+    margin-left: .5rem;
+}
 .pb30{
     padding-bottom: .3rem;
 }
@@ -1455,7 +1458,7 @@ label.error {
         }
 
         .remain-amount {
-            font-size: 0.54rem;
+            font-size: .86rem;
             padding-top: 0.3rem;
             text-align: center;
         }
@@ -1541,7 +1544,7 @@ label.error {
     }
 }
 .xjk-top-wrap{
-    height: 3rem !important;
+    height: 2.46rem !important;
 }
 .xjk-button{
     text-align: center;
@@ -1559,7 +1562,27 @@ label.error {
         
     }
 }
-
+.xjk-top-wrap{
+    .xjk-button{
+        text-align: center;
+        margin-top: 0;
+        position: absolute;
+        top: .28rem;
+        right: .28rem;
+        
+        .am-button{
+            width: 1.04rem;
+            font-size: .28rem;
+            background-color: transparent;
+            display: inline-block;
+            color: #fff;
+            height: .5rem;
+            line-height: .5rem;
+            border: 1px solid #fff;
+            border-radius: .25rem;
+        }
+    }
+}
 .becauseWrap{
     padding: .15rem .3rem;
     font-size: .26rem;
@@ -1789,10 +1812,99 @@ label.error {
     line-height: 1.8;
 }
 
+.xjk-withdraw-wrap{
+    .form-wrapper .form-item .item-title{
+        width: 1.7rem;
+    }
+}
+.user-income-wrap{
+    width: 100%;
+    overflow: hidden;
+    
+    div{
+        width: 50%;
+        padding: .3rem 0;
+        
+        &:first-child{
+            border-right: 1px solid $border-color;
+        }
+        
+        samp{
+            font-size: .24rem;
+            color: #999;
+        }
+        p{
+            font-size: .44rem;
+            margin-top: .15rem;
+            color: #484848;
+        }
+    }
+}
 
+.return-dialog{
+    .am-modal-header{
+        padding-bottom: .1rem !important;
+        p{
+            font-size: .3rem;
+            line-height: 2;
+        }
+    }
+    .am-modal-body{
+        max-height: 8rem !important;
+    }
+    .am-modal-footer{
+        padding: .4rem 1rem !important;
 
+        .am-button{
+            width: 1.5rem;
+        }
+    }
+    .am-button-cancel{
+        color: #bbb;
+        border: 1px solid #bbb;
+    }
+    .wrap{
+        overflow: hidden;
+        padding: 0 0 .1rem;
 
+        .tit{
+            display: inline-block;
+            width: 1.6rem;
+            line-height: .62rem;
+            text-align: left;
 
+            i{
+                display: inline-block;
+                width: 0.5em;
+            }
+        }
+        .conWrap{
+            width: 3.3rem;
+            height: .62rem;
+            border-bottom: 1px solid $border-color;
+            padding: .1rem 0;
+            position: relative;
+
+            samp.error{
+                font-size: .24rem;
+                display: inline-block;
+                color: $red-color;
+                line-height: .62rem;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            label.error{
+                font-size: .24rem;
+            }
+
+            .con{
+                font-size: .26rem;
+                color: #484848;
+            }
+        }
+    }
+}
 
 
 

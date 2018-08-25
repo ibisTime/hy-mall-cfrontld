@@ -1,9 +1,10 @@
 define([
     'app/controller/base',
+    'app/module/validate',
     'app/module/scroll',
     'app/interface/GeneralCtr',
     'app/interface/ActivityStr'
-], function(base, scroll, GeneralCtr, ActivityStr) {
+], function(base, Validate, scroll, GeneralCtr, ActivityStr) {
     var myScroll;
     var config = {
         start: 1,
@@ -116,8 +117,9 @@ define([
     		tmplbtnHtml += `<div class="order-item-footer"><div class="am-button am-button-small am-button-red delete-btn"  data-code="${item.code}">删除</div>
     					<div class="am-button am-button-small upActivity-btn" data-code="${item.code}">发布</div></div>`
     	}else if(item.status == "1"){
-    		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small" href="../public/comment2.html?code=${item.code}&name=${item.name}">查看留言</a>
-    						<div class="am-button am-button-small successGroup-btn" data-code="${item.code}">成团</div></div>`
+    		tmplbtnHtml += `<div class="order-item-footer"><a class="am-button am-button-small am-button-red" href="../public/comment2.html?code=${item.code}&name=${item.name}">查看留言</a>
+    						<div class="am-button am-button-small successGroup-btn am-button-red" data-code="${item.code}">成团</div>
+    						<div class="am-button am-button-small cancel-btn" data-code="${item.code}">取消活动</div></div>`
     	
     	}
     	
@@ -233,6 +235,70 @@ define([
         });
         
         
+        //取消活动
+        
+		var touchFalg=false;
+		
+		var _cancelForm = $("#cancelForm");
+        _cancelForm.validate({
+            'rules': {
+                remark: {
+                    required: true
+                }
+            },
+            onkeyup: false
+        });
+		
+        $("#content").on("click", ".cancel-btn", function() {
+            var code = $(this).attr("data-code");
+            $("#cancelDialog .confirm").attr("data-code", code)
+            $("#cancelDialog").removeClass("hidden");
+            
+            touchFalg = true
+        	$('body').on('touchmove',function(e){
+				if(touchFalg){
+					e.preventDefault();
+				}
+			})
+        });
+        
+        // 取消活动弹窗-关闭
+        $("#cancelDialog .canlce").click(function(){
+        	touchFalg = false
+        	$('body').on('touchmove',function(e){
+				if(touchFalg){
+					e.preventDefault();
+				}
+			})
+        	
+        	$("#cancelDialog").addClass("hidden");
+            $("#cancelDialog .confirm").attr("data-code", '')
+        })
+        
+        // 取消活动弹窗-确定
+        $("#cancelDialog .confirm").click(function(){
+            var code = $(this).attr("data-code");
+        	var params = _cancelForm.serializeObject();
+        	if(_cancelForm.valid()){
+        		base.showLoading("操作中...");
+            	ActivityStr.cancelActivity({
+            		actCode: code,
+            		...params
+            	}).then(() => {
+            		
+		        	$("#cancelDialog").addClass("hidden");
+		            $("#cancelDialog .confirm").attr("data-code", '')
+		            
+                	base.hideLoading();
+                    base.showMsg("操作成功");
+                    
+                    setTimeout(function(){
+			        	config.start = 1
+            			getPageActivity(true);
+                    },500)
+                }, base.hideLoading);
+        	}
+        })
 	}
 	
 	

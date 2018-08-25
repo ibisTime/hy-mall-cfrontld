@@ -61,5 +61,12 @@ define([
         upActivity(code) {
             return Ajax.get("808703", {code});
         },
+        // 取消活动
+        cancelActivity(config) {
+            return Ajax.get("808724", {
+            	updater: base.getUserId(),
+            	...config
+            });
+        },
     };
 })

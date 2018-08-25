@@ -36,6 +36,34 @@
 	<!--新增按钮-->
 	<!--<a class="activityAddBtn"  id="addBtn"></a>-->
 	
+	<!-- 取消活动弹窗 -->
+    <div class="return-dialog hidden" id="cancelDialog">
+    	<div class="am-modal-mask"></div>
+        <div class="am-modal-wrap">
+            <div role="document" class="am-modal">
+                <div class="am-modal-content">
+                    <div class="am-modal-header">
+                    	<p>确认取消活动？</p>
+                    </div>
+                    <div class="am-modal-body">
+                    	<form id="cancelForm">
+                    		<div class="wrap">
+                    			<samp class="fl tit">备注：</samp>
+                    			<div class="fr conWrap">
+                    				<input class="wp100 con" type="text" id="remark" name="remark" placeholder="请输入取消原因等..." />
+                    			</div>
+                    		</div>
+                    	</form>
+                    </div>
+                    <div class="am-modal-footer">
+                    	<div class="am-button am-button-small am-button-cancel fl canlce">关闭</div>
+                    	<div class="am-button am-button-small am-button-red fr confirm">确定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
     <link rel="import" href="../footer.html?__inline">
     <script>
         require(['app/controller/activity/ActivityList']);
