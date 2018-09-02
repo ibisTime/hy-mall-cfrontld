@@ -69,7 +69,7 @@ define([
 			<p class="name">活动名称:${item.activity.name}</p>
 				<samp class="slogan mt10">下单人：${item.user.nickname}</samp>
 				<samp class="slogan">下单人手机号：${item.user.mobile}</samp>
-				<samp class="slogan">下单时间：${base.formatDate(item.applyDatetime, "yyyy-MM-dd")}</samp>
+				<samp class="slogan">下单时间：${base.formatDate(item.applyDatetime, "yyyy-MM-dd hh:mm")}</samp>
 			</div></a>`
     	
         return `<div class="order-item leaseOrder-item">

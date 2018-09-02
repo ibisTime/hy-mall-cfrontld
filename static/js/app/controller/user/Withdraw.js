@@ -155,6 +155,8 @@ define([
             	
             	if(currencyType=='XJK'){
             		location.replace('./xjk-account.html');
+            	}else if(currencyType=='JF') {
+            		location.replace('./jf-account.html');
             	}else{
                 	location.replace('./rmb-account.html');
             	}

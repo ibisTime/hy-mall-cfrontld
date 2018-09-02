@@ -6,6 +6,7 @@ define([
     'app/interface/GeneralCtr',
 ], function(base, Validate, UserCtr, AccountCtr, GeneralCtr) {
 	var currency = base.getUrlParam("currency");//币种
+	var isBindCUser = base.getUrlParam("isBindCUser")
 	
 	var _formWrapper = $("#formWrapper");
 	

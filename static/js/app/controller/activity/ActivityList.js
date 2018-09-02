@@ -105,8 +105,8 @@ define([
 		<div class="mall-item-con fr">
 			<p class="name">${item.name}</p>
 				<samp class="slogan mt10">${item.groupNum}人成团</samp>
-				<samp class="slogan">${base.formatDate(item.startDatetime, "yyyy-MM-dd")}至${base.formatDate(item.endDatetime, "yyyy-MM-dd")}</samp>
-				<samp class="slogan">报名截止：${base.formatDate(item.enrollEndDatetime, "yyyy-MM-dd")}</samp>
+				<samp class="slogan">${base.formatDate(item.startDatetime, "yyyy-MM-dd hh:mm")}至${base.formatDate(item.endDatetime, "yyyy-MM-dd hh:mm")}</samp>
+				<samp class="slogan">报名截止：${base.formatDate(item.enrollEndDatetime, "yyyy-MM-dd hh:mm")}</samp>
 			</div></a>`
     	
     	

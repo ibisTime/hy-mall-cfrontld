@@ -116,7 +116,7 @@ define([
         
         // 转账
         $("#withdrawBtn").click(function() {
-        	location.href = '../account/withdraw.html?currency=JF'
+        	location.href = '../account/withdraw.html?currency=JF&isBindCUser='+isBindCUser
         })
         
     }
